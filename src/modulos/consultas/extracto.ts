@@ -15,7 +15,7 @@ import { EditMessageTextOptions } from "../../bot/EditMessageTextOptions";
 
 export namespace Extracto {
 
-    export enum Options {
+    enum Options {
         Ene = 'Ene',
         Feb = 'Feb',
         Mar = 'Mar',
@@ -36,7 +36,7 @@ export namespace Extracto {
 
         export const sendMessage = (msg: Message, update?: boolean) => {
 
-            Data.Chats.actualizarChat(msg, Contextos.Consultas.Extracto.operacionProducto, "").then(() => {
+            Data.Chats.actualizarChat(msg, Contextos.Consultas.Extracto.seleccionMes, "").then(() => {
 
                 const messageOptions = {
                     reply_markup: {
@@ -83,27 +83,12 @@ export namespace Extracto {
                     message_id: msg.message_id,
                     chat_id: msg.chat.id,
                     reply_markup:messageOptions.reply_markup
-                } as EditMessageTextOptions);
-                
-/*                
-                as EditMessageTextOptions).then(
-                    () => {
-                        bot.editMessageReplyMarkup(messageOptions.reply_markup as InlineKeyboardMarkup, {
-                            message_id: msg.message_id,
-                            chat_id: msg.chat.id
-                        } as EditMessageReplyMarkupOptions);
-                    }
-                    );
-*/                
-
+                } as EditMessageTextOptions);                
             });
         }
-
+        
         export const onOperacionProducto = (msg: ApiMessage) => {
-            Data.Chats.actualizarChat(msg.message, Contextos.Consultas.Index.index, "").then(
-                () => {
-                    sendMessage(msg.message, true);
-                });
+            sendMessage(msg.message, true);
         }
     }
         

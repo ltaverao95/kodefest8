@@ -56,10 +56,10 @@ export namespace Constants {
                     export const getClave = 'getClave';
                 }
                 export namespace MenuPrincipal {
-                    export const consultas = 'consultas';
-                    export const facturas = 'facturas';
-                    export const transferencias = 'transferencias';
-                    export const configuracion = 'configuracion';
+                    export const consultas = '🔍 Consultas';
+                    export const facturas = '📄 Facturas';
+                    export const transferencias = '💳 Transferencias';
+                    export const configuracion = '⚙️ Configuración';
                 }
             }
 

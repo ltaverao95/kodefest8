@@ -4,5 +4,5 @@ import { ReplyKeyboardRemove } from "./ReplyKeyboardRemove";
 
 export interface SendMessageOptions {
     parse_mode: string;
-    reply_markup: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove;
+    reply_markup: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove;    
 }

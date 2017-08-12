@@ -11,7 +11,8 @@ import { InlineKeyboardButton } from "../../bot/InlineKeyboardButton";
 
 import {
     Contextos,
-    Comandos
+    Comandos,
+    ChatModel,
 } from '../../core';
 
 import * as Data from '../../data';
@@ -59,7 +60,7 @@ export namespace Index {
                                     callback_data: Contextos.PaginaInicial.menuPrincipal
                                 }
                             ]
-                        ]
+                        ],
                     } as ReplyKeyboardMarkup
                 } as SendMessageOptions;
 
@@ -81,15 +82,17 @@ export namespace Index {
             });
         }
 
-        export const onConsultas = (msg: Message) => {
-            sendMessage(msg, true);
+        export const onConsultas = (msg: Message, update?:boolean) => {
+            Data.Chats.getChat(msg).then((chatModel: ChatModel) => {
+                sendMessage(msg, update);
+            });
         }
     }
 
     export namespace eventHandlers {
 
         export const listen = () => {
-            
+
             bot.on('message', (msg: Message) => {
 
                 if (!msg.text) {
@@ -105,6 +108,10 @@ export namespace Index {
 
                 if (!msg.data) {
                     return;
+                }
+
+                if (msg.data.indexOf(Contextos.Consultas.Index.index) === 0) {
+                    Metodos.onConsultas(msg.message, true);
                 }
             });
 

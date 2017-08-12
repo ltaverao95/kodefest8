@@ -11,5 +11,5 @@ export interface ReplyKeyboardMarkup {
     keyboard?: Array<Array<KeyboardButton>>;
     inline_keyboard?:Array<Array<InlineKeyboardButton>>;
     resize_keyboard?: boolean;
-    one_time_keyboard?: boolean;
+    one_time_keyboard?: boolean;    
 }

@@ -45,7 +45,7 @@ export namespace index {
                         && chat.comando == Comandos.PaginaInicial.Index.getClave) {
                         if (Validaciones.esNumeroRequeridoValido(msg.text)) {
                             if (msg.text === "123") {
-                                MenuPrincipalImpl.sendMessage(msg);
+                                MenuPrincipalImpl.Metodos.sendMessage(msg);
                             } else {
                                 enviarMensajeClaveIncorrecta(msg);
                             }
