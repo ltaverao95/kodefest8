@@ -2,39 +2,24 @@ import {
   TelegramBot as TelegramBotModel
 } from './bot/TelegramBot';
 
-import {
-  bot as botDist
-} from './initBotDist';
+const TelegramBot = require('node-telegram-bot-api');
 
-let bot: any;
+// replace the value below with the Telegram token you receive from @BotFather
+const token = '436331165:AAGcARHfHuuSSaJ_e1iAOx2q_0lrxpWoYYM';
 
-declare const process: any;
-if (process.env.NODE_ENV.trim() != 'development') {
-  console.log('production stage');
-  bot = botDist;
-} else {
-  console.log('development stage');
-  const TelegramBot = require('node-telegram-bot-api');
+// Create a bot that uses 'polling' to fetch new updates
+const prodOptions = {
+  webHook: {
+    port: process.env.PORT || 5000
+  }
+};
 
-  // replace the value below with the Telegram token you receive from @BotFather
-  const token = '447133612:AAG96SqODQfDB9sXv9YB9GLdWEg15BxekPQ';
+const devOptions = {
+  polling: true
+};
 
-  // Create a bot that uses 'polling' to fetch new updates
-  const prodOptions = {
-    webHook: {
-      port: process.env.PORT || 5000
-    }
-  };
+export const bot = new TelegramBot(token, prodOptions);
 
-  const devOptions = {
-    polling: true
-  };
+const url = 'https://kodefest8.herokuapp.com/dist/index.js';
 
-  bot = new TelegramBot(token, devOptions);
-
-  const url = 'https://kodefest8.herokuapp.com/dist/index.js';
-
-  //bot.setWebHook(`${url}/bot${token}`);
-}
-
-export { bot };
+bot.setWebHook(`${url}/bot${token}`);
