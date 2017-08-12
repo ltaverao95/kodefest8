@@ -7,7 +7,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "node test.js",
-    "build": "set NODE_ENV=production && tsc || node dist/index.js",
+    "build": "set NODE_ENV=production && node dist/index.js",
     "dev": "set NODE_ENV=development && node dist/index.js"
   },
   "dependencies": {
@@ -16,15 +16,15 @@
     "express": "^4.15.2",
     "firebase": "^4.2.0",
     "node-schedule": "^1.2.3",
-    "node-telegram-bot-api": "^0.27.1",
-    "typescript": "^2.4.2"
+    "node-telegram-bot-api": "^0.27.1"    
   },
   "devDependencies": {
     "@types/firebase": "^2.4.31",
     "@types/node": "^8.0.19",
     "@types/node-telegram-bot-api": "^0.27.0",
     "request": "^2.81.0",
-    "tape": "^4.7.0"
+    "tape": "^4.7.0",
+    "typescript": "^2.4.2"
   },
   "repository": {
     "type": "git",

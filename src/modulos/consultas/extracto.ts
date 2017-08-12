@@ -79,7 +79,7 @@ export namespace Extracto {
                     return;
                 }
 
-                bot.editMessageText(`Elige un mes`, {
+                bot.editMessageText(`Elige un mes para consultar`, {
                     message_id: msg.message_id,
                     chat_id: msg.chat.id,
                     reply_markup:messageOptions.reply_markup
@@ -115,7 +115,5 @@ export namespace Extracto {
         }
     }
 }
-
-declare const process:any;
 
 Extracto.eventHandlers.listen();
