@@ -35,4 +35,14 @@ export namespace Chats {
                 console.log("Chats/getChat" + error);
             });
     }
+
+    export const getChatByUserId = (chatId: number): Promise<ChatModel> => {
+        return dataBase.ref('chats/' + chatId).once('value')
+            .then((snapshot: any) => {
+                return snapshot.val();
+            })
+            .catch((error: any) => {
+                console.log("Chats/getChat" + error);
+            });
+    }
 }

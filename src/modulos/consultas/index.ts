@@ -32,7 +32,8 @@ export namespace Index {
     export namespace Metodos {
 
         export const sendMessage = (msg: Message, update?: boolean) => {
-            Data.Chats.guardarContexto(msg, Contextos.Consultas.Index.index).then(() => {
+
+            Data.Chats.actualizarChat(msg, Contextos.Consultas.Index.index, "").then(() => {
                 const messageOptions = {
                     reply_markup: {
                         inline_keyboard: [
@@ -83,9 +84,7 @@ export namespace Index {
         }
 
         export const onConsultas = (msg: Message, update?: boolean) => {
-            Data.Chats.getChat(msg).then((chatModel: ChatModel) => {
-                sendMessage(msg, update);
-            });
+            sendMessage(msg, update);
         }
     }
 
