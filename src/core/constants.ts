@@ -31,9 +31,20 @@ export namespace Constants {
             }
 
             export namespace Consultas {
-                export const index = 'Consultas/index';
-                export const saldos = 'Consultas/saldos';
-                export const extracto = 'Consultas/extracto';
+
+                export namespace Index {
+                    export const index = 'Consultas/index';
+                }
+
+                export namespace Saldos {
+                    export const saldos = 'Consultas/saldos';
+                }
+
+                export namespace Extracto {
+                    export const operacionProducto = 'Consultas/Extracto/operacionProducto';
+                    export const seleccionMes = 'Consultas/Extracto/seleccionMes';
+                    export const reporte = 'Consultas/Extracto/reporte';
+                }                                                
             }
         }
 
