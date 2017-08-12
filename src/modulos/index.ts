@@ -5,7 +5,10 @@ import { Message } from "../bot/Message";
 import { SendMessageOptions } from "../bot/SendMessageOptions";
 
 import { Model } from "../core/models";
-import { Constants } from '../core/constants';
+import {
+    Contextos,
+    Comandos
+} from '../core';
 import { Validaciones } from '../utils';
 
 import { index as paginaInicialIndex } from './pagina-inicial';
@@ -33,7 +36,9 @@ export namespace index {
 
             bot.onText(/^\/start$/, (msg: Message, match: any) => {
 
-                Data.Chats.actualizarChat(msg, Constants.Chat.Contextos.PaginaInicial.index, Constants.Chat.Comandos.PaginaInicial.Index.getUsuario).then(() => {
+                Data.Chats.actualizarChat(msg, 
+                                          Contextos.PaginaInicial.index, 
+                                          Comandos.PaginaInicial.Index.getUsuario).then(() => {
                     messages.sendMessage(msg);
                 });
             });
@@ -49,8 +54,8 @@ export namespace index {
                 }
 
                 Data.Chats.getChat(msg).then((chat: Model.ChatModel) => {
-                    if (chat.contexto == Constants.Chat.Contextos.PaginaInicial.index
-                        && chat.comando == Constants.Chat.Comandos.PaginaInicial.Index.getUsuario) {
+                    if (chat.contexto == Contextos.PaginaInicial.index
+                        && chat.comando == Comandos.PaginaInicial.Index.getUsuario) {
                         if (Validaciones.esNumeroRequeridoValido(msg.text)) {
                             if (msg.text === "123") {
                                 solicitarClave(msg);
@@ -81,7 +86,9 @@ export namespace index {
 
         const solicitarClave = (msg: Message) => {
 
-            Data.Chats.actualizarChat(msg, Constants.Chat.Contextos.PaginaInicial.index, Constants.Chat.Comandos.PaginaInicial.Index.getClave).then(() => {
+            Data.Chats.actualizarChat(msg, 
+                                      Contextos.PaginaInicial.index, 
+                                      Comandos.PaginaInicial.Index.getClave).then(() => {
                 paginaInicialIndex.messages.sendMessage(msg);
             });
         };

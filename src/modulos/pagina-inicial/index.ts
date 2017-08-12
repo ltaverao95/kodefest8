@@ -5,8 +5,13 @@ import { Message } from "../../bot/Message";
 import { SendMessageOptions } from "../../bot/SendMessageOptions";
 
 import { Model } from "../../core/models";
-import { Constants } from '../../core/constants';
+import {
+    Contextos,
+    Comandos
+} from '../../core';
 import { Validaciones } from '../../utils';
+
+import { MenuPrincipal as MenuPrincipalImpl } from './menu-principal';
 
 export namespace index {
 
@@ -36,11 +41,11 @@ export namespace index {
                 }
 
                 Data.Chats.getChat(msg).then((chat: Model.ChatModel) => {
-                    if (chat.contexto == Constants.Chat.Contextos.PaginaInicial.index
-                        && chat.comando == Constants.Chat.Comandos.PaginaInicial.Index.getClave) {
+                    if (chat.contexto == Contextos.PaginaInicial.index
+                        && chat.comando == Comandos.PaginaInicial.Index.getClave) {
                         if (Validaciones.esNumeroRequeridoValido(msg.text)) {
                             if (msg.text === "456") {
-                                console.log('Continuar Consultas...');
+                                MenuPrincipalImpl.sendMessage(msg);
                             } else {
                                 enviarMensajeClaveIncorrecta(msg);
                             }
