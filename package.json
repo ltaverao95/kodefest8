@@ -4,10 +4,10 @@
   "engines": {
     "node": "6.11.1"
   },
-  "main": "dist/indexDist.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "node test.js",
-    "build": "set NODE_ENV=production && tsc || node dist/indexDist.js",
+    "build": "set NODE_ENV=production && tsc || node dist/index.js",
     "dev": "set NODE_ENV=development && node dist/index.js"
   },
   "dependencies": {
