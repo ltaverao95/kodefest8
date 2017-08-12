@@ -13,4 +13,4 @@ docker-compose.yml
 
 # Dist package
 dist/
-src/initBot.ts
+//src/initBot.ts
