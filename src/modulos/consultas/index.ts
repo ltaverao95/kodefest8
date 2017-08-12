@@ -9,61 +9,97 @@ import { SendMessageOptions } from "../../bot/SendMessageOptions";
 import { ReplyKeyboardMarkup } from "../../bot/ReplyKeyboardMarkup";
 import { InlineKeyboardButton } from "../../bot/InlineKeyboardButton";
 
-import { Constants as CoreConstants } from "../../core";
+import {
+    Contextos,
+    Comandos
+} from '../../core';
 
 import * as Data from '../../data';
 
-export namespace Consultas {
+export namespace Index {
 
-    export enum InlineKeyBoardOptions {
+    export enum Options {
         Saldos = 'Saldos',
         Extracto = 'Extracto',
         Movimientos = 'Movimientos',
-        Volver = "Volver"
+        Volver = "⬅️ Volver"
     }
-
 
     export namespace Metodos {
 
-        export const sendMessage = (msg: Message) => {
-            Data.Chats.guardarContexto(msg, CoreConstants.Chat.Contextos.Consultas.Index.index).then(() => {
+        export const sendMessage = (msg: Message, update?: boolean) => {
+            Data.Chats.guardarContexto(msg, Contextos.Consultas.Index.index).then(() => {
                 const messageOptions = {
                     reply_markup: {
                         inline_keyboard: [
                             [
                                 {
-                                    text: InlineKeyBoardOptions.Saldos,
-                                    callback_data: CoreConstants.Chat.Contextos.Consultas.Saldos.saldos
-                                } as InlineKeyboardButton
+                                    text: Options.Saldos,
+                                    callback_data: Contextos.Consultas.Saldos.saldos
+                                }
                             ],
                             [
                                 {
-                                    text: InlineKeyBoardOptions.Extracto,
-                                    callback_data: CoreConstants.Chat.Contextos.Consultas.Extracto.operacionProducto
-                                } as InlineKeyboardButton
+                                    text: Options.Extracto,
+                                    callback_data: Contextos.Consultas.Extracto.operacionProducto
+                                }
                             ],
                             [
                                 {
-                                    text: InlineKeyBoardOptions.Movimientos,
-                                    callback_data: ''
-                                } as InlineKeyboardButton
+                                    text: Options.Movimientos,
+                                    callback_data: 'lkj'
+                                }
                             ],
                             [
                                 {
-                                    text: InlineKeyBoardOptions.Volver,
-                                    callback_data: CoreConstants.Chat.Contextos.PaginaInicial.menuPrincipal
-                                } as InlineKeyboardButton
+                                    text: Options.Volver,
+                                    callback_data: Contextos.PaginaInicial.menuPrincipal
+                                }
                             ]
                         ]
                     } as ReplyKeyboardMarkup
                 } as SendMessageOptions;
 
-                bot.sendMessage(
-                    msg.chat.id,
-                    `Elige una operación`,
-                    messageOptions
-                );
+                if (!update) {
+                    bot.sendMessage(
+                        msg.chat.id,
+                        `Elige una operación`,
+                        messageOptions
+                    );
+
+                    return;
+                }
+
+                //TODO: update code.
+            });
+        }
+    }
+
+    export namespace eventHandlers {
+
+        export const listen = () => {
+            bot.on('message', (msg: Message) => {
+
+                if (!msg.text) {
+                    return;
+                }
+
+            });
+
+            bot.on('callback_query', (msg: ApiMessage) => {
+
+                if (!msg.data) {
+                    return;
+                }
+            });
+
+            bot.onText(/^\/consultas$/, (msg: Message, match: any) => {
+                Data.Chats.guardarNuevaConfiguracionDeUsuario(msg).then(() => {
+                    Metodos.sendMessage(msg);
+                });
             });
         }
     }
 }
+
+Index.eventHandlers.listen();
