@@ -90,6 +90,8 @@ export namespace Constants {
             }
         }
     }
+
+    export const RUTA_SERVIDOR = '';
 }
 
 export const Contextos = Constants.Chat.Contextos;
