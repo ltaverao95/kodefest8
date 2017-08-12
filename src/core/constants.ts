@@ -7,6 +7,20 @@ export namespace Constants {
         PagoProducto = 'Pago producto'
     }
 
+    export enum ProductosEnum {
+        CuentaDeAhorros = 'Cuenta de ahorros',
+        TarjetaDeCredito = 'Tarjeta de crédito',
+        CuentaCorriente = 'Cuenta corriente',
+        TarjetaDebito = 'Tarjeta débito'
+    }
+
+    export enum IconosEnum {
+        CuentaDeAhorros = 'CuentaDeAhorros.png',
+        TarjetaDeCredito = 'TarjetaDeCredito.png',
+        CuentaCorriente = 'CuentaCorriente.png',
+        TarjetaDebito = 'TarjetaDebito.png'
+    }
+    
     export namespace Chat {
 
         export namespace Contextos {
@@ -26,12 +40,10 @@ export namespace Constants {
         export namespace Comandos {
 
             export namespace PaginaInicial {
-
                 export namespace Index {
                     export const getUsuario = 'getUsuario';
                     export const getClave = 'getClave';
                 }
-
                 export namespace MenuPrincipal {
                     export const consultas = 'consultas';
                     export const facturas = 'facturas';
@@ -41,7 +53,15 @@ export namespace Constants {
             }
 
             export namespace Consultas {
-
+                export namespace Index {
+                    export const saldos = 'saldos';
+                    export const extracto = 'extracto';
+                    export const movimientos = 'movimientos';
+                    export const volver = 'volver';
+                }
+                export namespace Saldos {
+                    export const volver = 'volver';
+                }                
             }
         }
     }
