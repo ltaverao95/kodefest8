@@ -16,7 +16,7 @@ export namespace index {
         export const sendMessage = (msg: Message) => {
             bot.sendMessage(
                 msg.chat.id,
-                `Hola <b>${msg.from.first_name}</b>, bienvenido al banco KodeFest8`,
+                `Hola <b>${msg.from.first_name}</b>, bienvenido al banco KodeFest8, por favor ingresa tu identificación`,
                 messageOptions
             );
         };
