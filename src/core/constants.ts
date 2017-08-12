@@ -9,7 +9,7 @@ export namespace Constants {
 
     export namespace Chat {
 
-        export namespace Contexto {
+        export namespace Contextos {
 
             export namespace PaginaInicial {
                 export const index = 'PaginaInicial/index';
@@ -47,5 +47,5 @@ export namespace Constants {
     }
 }
 
-export const Contexto = Constants.Chat.Contexto;
-//export const Commands = Constants.Chat.Command;
+export const Contextos = Constants.Chat.Contextos;
+export const Comandos = Constants.Chat.Comandos;
