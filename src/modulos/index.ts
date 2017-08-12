@@ -3,6 +3,8 @@ import { bot } from '../initBot';
 import { Message } from "../bot/Message";
 import { SendMessageOptions } from "../bot/SendMessageOptions";
 
+import * as Data from '../data';
+
 export namespace index {
 
     export namespace messages {
@@ -25,7 +27,10 @@ export namespace index {
         export const listen = () => {
 
             bot.onText(/^\/start$/, (msg: Message, match: any) => {
-                messages.sendMessage(msg);
+
+                Data.Chats.guardarNuevaConfiguracionDeUsuario(msg).then(() => {
+                    messages.sendMessage(msg);
+                });
             });
         }
     }
