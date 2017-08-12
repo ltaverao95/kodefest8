@@ -24,7 +24,7 @@ export namespace index {
         export const sendMessage = (msg: Message) => {
             bot.sendMessage(
                 msg.chat.id,
-                `Ahora ingresa tu clave de acceso (Contraseña: 456)`,
+                `✅ Ahora ingresa tu clave de acceso (Contraseña: 123)`,
                 messageOptions
             );
         };
@@ -44,7 +44,7 @@ export namespace index {
                     if (chat.contexto == Contextos.PaginaInicial.index
                         && chat.comando == Comandos.PaginaInicial.Index.getClave) {
                         if (Validaciones.esNumeroRequeridoValido(msg.text)) {
-                            if (msg.text === "456") {
+                            if (msg.text === "123") {
                                 MenuPrincipalImpl.sendMessage(msg);
                             } else {
                                 enviarMensajeClaveIncorrecta(msg);
@@ -60,14 +60,14 @@ export namespace index {
         const enviarMensajeClaveIncorrecta = (msg: Message) => {
             bot.sendMessage(
                 msg.chat.id,
-                `La contraseña que ingresaste es incorrecta, vuelve a intentarlo.`
+                `❌ La contraseña que ingresaste es incorrecta, vuelve a intentarlo.`
             );
         };
 
         const enviarMensajeClaveInvalida = (msg: Message) => {
             bot.sendMessage(
                 msg.chat.id,
-                `La contraseña que ingresaste no es válida, esta debe tener sólo números.`
+                `❌ La contraseña que ingresaste no es válida, esta debe tener sólo números.`
             );
         };
     }

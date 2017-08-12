@@ -24,7 +24,7 @@ export namespace index {
         export const sendMessage = (msg: Message) => {
             bot.sendMessage(
                 msg.chat.id,
-                `Hola <b>${msg.from.first_name}</b>, bienvenido al banco KodeFest8, por favor ingresa tu identificación (Identificación: 123)`,
+                `Hola <b>${msg.from.first_name}</b>, bienvenido al banco KodeFest8, por favor ingresa tu identificación`,
                 messageOptions
             );
         };
@@ -57,11 +57,9 @@ export namespace index {
                     if (chat.contexto == Contextos.PaginaInicial.index
                         && chat.comando == Comandos.PaginaInicial.Index.getUsuario) {
                         if (Validaciones.esNumeroRequeridoValido(msg.text)) {
-                            if (msg.text === "123") {
+                            Data.Clientes.actualizarDocumento(msg, parseInt(msg.text)).then(() => {
                                 solicitarClave(msg);
-                            } else {
-                                enviarMensajeIdentificacionIncorrecta(msg);
-                            }
+                            });
                         } else {
                             enviarMensajeIdentificacionInvalido(msg);
                         }
@@ -70,17 +68,10 @@ export namespace index {
             });
         }
 
-        const enviarMensajeIdentificacionIncorrecta = (msg: Message) => {
-            bot.sendMessage(
-                msg.chat.id,
-                `La identificación que ingresaste es incorrecta, vuelve a intentarlo.`
-            );
-        };
-
         const enviarMensajeIdentificacionInvalido = (msg: Message) => {
             bot.sendMessage(
                 msg.chat.id,
-                `La identificación que ingresaste no es válida, esta debe tener sólo números.`
+                `❌ La identificación que ingresaste no es válida, esta debe tener sólo números.`
             );
         };
 
