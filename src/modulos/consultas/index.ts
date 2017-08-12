@@ -67,7 +67,7 @@ export namespace Index {
                 if (!update) {
                     bot.sendMessage(
                         msg.chat.id,
-                        `Elige una operación`,
+                        `¿Qué quieres consultar?`,
                         messageOptions
                     );
 

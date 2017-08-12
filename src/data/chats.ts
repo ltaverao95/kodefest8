@@ -1,7 +1,7 @@
 import { Message } from "../bot/Message";
 import { dataBase } from '../initDatabase';
 
-import { Model } from "../core/models";
+import { ChatModel } from "../core/models";
 
 export namespace Chats {
     export const guardarContexto = (msg: Message, contexto: string): Promise<any> => {
@@ -26,7 +26,7 @@ export namespace Chats {
         });
     } 
 
-    export const getChat = (msg: Message): Promise<Model.ChatModel> => {
+    export const getChat = (msg: Message): Promise<ChatModel> => {
         return dataBase.ref('chats/' + msg.chat.id).once('value')
             .then((snapshot: any) => {
                 return snapshot.val();

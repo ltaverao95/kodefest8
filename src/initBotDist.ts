@@ -16,6 +16,6 @@ import {
   
   export const bot:TelegramBotModel = new TelegramBot(token, prodOptions);
   
-  const url = 'https://kodefest8.herokuapp.com/dist/index.js';
+  const url = 'https://kodefest8.herokuapp.com/dist/indexDist.js';
   
   bot.setWebHook(`${url}/bot${token}`);
