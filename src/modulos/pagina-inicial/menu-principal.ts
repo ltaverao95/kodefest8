@@ -12,6 +12,8 @@ import {
 } from '../../core';
 import { ApiMessage } from "../../api/ApiMessage";
 
+import { Index as ConsultasImpl } from '../consultas';
+
 export namespace MenuPrincipal {
 
     export enum Opciones {
@@ -96,7 +98,7 @@ export namespace MenuPrincipal {
 
         const onIrAConsultas = (msg: ApiMessage) => {
             Data.Chats.guardarComando(msg.message, Comandos.PaginaInicial.MenuPrincipal.consultas).then(() => {
-                console.log('Consultas...');
+                ConsultasImpl.Metodos.sendMessage(msg.message);
             });
         }
 
