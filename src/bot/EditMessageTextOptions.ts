@@ -7,8 +7,10 @@
 import { User } from "./User";
 import { Chat } from "./Chat";
 import { Location } from "./Location";
+import { InlineKeyboardMarkup } from "./InlineKeyboardMarkup";
 
 export interface EditMessageTextOptions {
     message_id: number | string;
-    chat_id: number;    
+    chat_id: number;
+    reply_markup:InlineKeyboardMarkup;
 }
