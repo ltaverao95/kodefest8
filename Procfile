@@ -1,1 +1,1 @@
-web: node dist/indexDist.js
+web: npm run build
