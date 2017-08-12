@@ -12,5 +12,4 @@ Dockerfile
 docker-compose.yml
 
 # Dist package
-dist/
 src/initBotTokenDev.ts
