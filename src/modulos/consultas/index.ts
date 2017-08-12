@@ -15,6 +15,9 @@ import {
 } from '../../core';
 
 import * as Data from '../../data';
+import { EditMessageTextOptions } from "../../bot/EditMessageTextOptions";
+import { InlineKeyboardMarkup } from "../../bot/InlineKeyboardMarkup";
+import { EditMessageReplyMarkupOptions } from "../../bot/EditMessageReplyMarkupOptions";
 
 export namespace Index {
 
@@ -22,7 +25,7 @@ export namespace Index {
         Saldos = 'Saldos',
         Extracto = 'Extracto',
         Movimientos = 'Movimientos',
-        Volver = "⬅️ Volver"
+        Volver = "<< Volver"
     }
 
     export namespace Metodos {
@@ -70,7 +73,17 @@ export namespace Index {
                     return;
                 }
 
-                //TODO: update code.
+                bot.editMessageText(`Elige una operación`, {
+                    message_id: msg.message_id,
+                    chat_id: msg.chat.id
+                } as EditMessageTextOptions).then(
+                    () => {
+                        bot.editMessageReplyMarkup(messageOptions.reply_markup as InlineKeyboardMarkup, {
+                            message_id: msg.message_id,
+                            chat_id: msg.chat.id
+                        } as EditMessageReplyMarkupOptions);
+                    }
+                    );
             });
         }
     }
@@ -84,6 +97,9 @@ export namespace Index {
                     return;
                 }
 
+                if (msg.text.indexOf(Contextos.Consultas.Index.index) === 0) {
+                    Metodos.sendMessage(msg, true);
+                }
             });
 
             bot.on('callback_query', (msg: ApiMessage) => {
