@@ -22,6 +22,7 @@ export namespace MenuPrincipal {
             Data.Chats.guardarContexto(msg, Contextos.PaginaInicial.menuPrincipal).then(() => {
                 const messageOptions = {
                     reply_markup: {
+                        remove_keyboard: true,
                         one_time_keyboard: true,
                         keyboard: [
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.consultas }],
