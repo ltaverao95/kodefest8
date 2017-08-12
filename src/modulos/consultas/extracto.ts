@@ -27,4 +27,6 @@ export namespace Extracto {
     export enum InlineKeyBoardOptions {
         Volver = 'Volver',
     }
+
+    
 }
