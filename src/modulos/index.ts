@@ -3,6 +3,8 @@ import { bot } from '../initBot';
 import { Message } from "../bot/Message";
 import { SendMessageOptions } from "../bot/SendMessageOptions";
 
+import * as Data from '../data';
+
 export namespace index {
 
     export namespace messages {
@@ -14,7 +16,7 @@ export namespace index {
         export const sendMessage = (msg: Message) => {
             bot.sendMessage(
                 msg.chat.id,
-                `Hola <b>${msg.from.first_name}</b>, bienvenido al banco KodeFest8`,
+                `Hola <b>${msg.from.first_name}</b>, bienvenido al banco KodeFest8, por favor ingresa tu identificación`,
                 messageOptions
             );
         };
@@ -25,7 +27,10 @@ export namespace index {
         export const listen = () => {
 
             bot.onText(/^\/start$/, (msg: Message, match: any) => {
-                messages.sendMessage(msg);
+
+                Data.Chats.guardarNuevaConfiguracionDeUsuario(msg).then(() => {
+                    messages.sendMessage(msg);
+                });
             });
         }
     }

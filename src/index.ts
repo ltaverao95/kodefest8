@@ -1,4 +1,17 @@
+/**
+ * Infraestructura
+ */
 require('./initDatabase');
 require('./initBot');
 
-require('./app/index');
+/**
+ * Módulos
+ */
+require('./modulos/pagina-inicial');
+require('./modulos/consultas');
+require('./modulos/facturas');
+require('./modulos/transferencias');
+require('./modulos/configuracion');
+
+require('./modulos/index');
+
