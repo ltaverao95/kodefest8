@@ -116,4 +116,6 @@ export namespace Extracto {
     }
 }
 
+declare const process:any;
+
 Extracto.eventHandlers.listen();
