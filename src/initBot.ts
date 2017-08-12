@@ -48,11 +48,7 @@ if (process.env.NODE_ENV.trim() == 'development') {
       port: process.env.PORT || 5000
     }
   };
-
-  const devOptions = {
-    polling: true
-  };
-
+  
   bot = new TelegramBot(token, prodOptions);
 
   const url = 'https://kodefest8.herokuapp.com/dist/index.js';

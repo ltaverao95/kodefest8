@@ -7,8 +7,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "node test.js",
-    "build": "rm -r dist || tsc || node dist/index.js",
-    "dev": "node dist/index.js"
+    "build": "set NODE_ENV=production && tsc || node dist/index.js",
+    "dev": "set NODE_ENV=development && node dist/index.js"
   },
   "dependencies": {
     "@types/node-schedule": "^1.2.0",
