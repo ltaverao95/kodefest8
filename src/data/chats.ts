@@ -1,6 +1,8 @@
 import { Message } from "../bot/Message";
 import { dataBase } from '../initDatabase';
 
+import { Model } from "../core/models";
+
 export namespace Chats {
     export const guardarContexto = (msg: Message, contexto: string): Promise<any> => {
         return dataBase.ref('chats/' + msg.chat.id + '/contexto').set(contexto);
@@ -23,4 +25,14 @@ export namespace Chats {
             comando: ""
         });
     } 
+
+    export const getChat = (msg: Message): Promise<Model.ChatModel> => {
+        return dataBase.ref('chats/' + msg.chat.id).once('value')
+            .then((snapshot: any) => {
+                return snapshot.val();
+            })
+            .catch((error: any) => {
+                console.log("Chats/getChat" + error);
+            });
+    }
 }
