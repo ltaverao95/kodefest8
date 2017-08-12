@@ -81,18 +81,23 @@ export namespace Index {
             });
         }
 
-        export const onConsultas = (msg: ApiMessage) => {
-            sendMessage(msg.message, true);
+        export const onConsultas = (msg: Message) => {
+            sendMessage(msg, true);
         }
     }
 
     export namespace eventHandlers {
 
         export const listen = () => {
+            
             bot.on('message', (msg: Message) => {
 
                 if (!msg.text) {
                     return;
+                }
+
+                if (msg.text.indexOf(Comandos.PaginaInicial.MenuPrincipal.consultas) === 0) {
+                    Metodos.onConsultas(msg);
                 }
             });
 
@@ -100,10 +105,6 @@ export namespace Index {
 
                 if (!msg.data) {
                     return;
-                }
-
-                if (msg.data.indexOf(Contextos.Consultas.Index.index) === 0) {
-                    Metodos.onConsultas(msg);
                 }
             });
 
