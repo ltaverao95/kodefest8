@@ -61,6 +61,20 @@ export namespace Constants {
                 }
                 export namespace Saldos {
                     export const volver = 'volver';
+                }
+                export namespace Extracto {
+                    export const ene = 'ene';
+                    export const feb = 'feb';
+                    export const abr = 'abr';
+                    export const may = 'may';
+                    export const jun = 'jun';
+                    export const jul = 'jul';
+                    export const ago = 'ago';
+                    export const sep = 'sep';
+                    export const oct = 'oct';
+                    export const nov = 'nov';
+                    export const dic = 'dic';
+                    export const volver = 'volver';
                 }                
             }
         }
