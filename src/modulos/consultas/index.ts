@@ -75,16 +75,14 @@ export namespace Index {
 
                 bot.editMessageText(`Elige una operación`, {
                     message_id: msg.message_id,
-                    chat_id: msg.chat.id
-                } as EditMessageTextOptions).then(
-                    () => {
-                        bot.editMessageReplyMarkup(messageOptions.reply_markup as InlineKeyboardMarkup, {
-                            message_id: msg.message_id,
-                            chat_id: msg.chat.id
-                        } as EditMessageReplyMarkupOptions);
-                    }
-                    );
+                    chat_id: msg.chat.id,
+                    reply_markup: messageOptions.reply_markup
+                } as EditMessageTextOptions);
             });
+        }
+
+        export const onConsultas = (msg: ApiMessage) => {
+            sendMessage(msg.message, true);
         }
     }
 
@@ -96,16 +94,16 @@ export namespace Index {
                 if (!msg.text) {
                     return;
                 }
-
-                if (msg.text.indexOf(Contextos.Consultas.Index.index) === 0) {
-                    Metodos.sendMessage(msg, true);
-                }
             });
 
             bot.on('callback_query', (msg: ApiMessage) => {
 
                 if (!msg.data) {
                     return;
+                }
+
+                if (msg.data.indexOf(Contextos.Consultas.Index.index) === 0) {
+                    Metodos.onConsultas(msg);
                 }
             });
 
