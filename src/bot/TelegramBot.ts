@@ -18,10 +18,10 @@ export interface TelegramBot {
     sendMessage(chatId: number | string, text: string, options?: SendMessageOptions): Promise<any>;
     editMessageReplyMarkup(replyMarkup: InlineKeyboardMarkup, options?: EditMessageReplyMarkupOptions): Promise<any>;
     editMessageText(text: string, options?: EditMessageTextOptions): Promise<any>;
-    
+    answerInlineQuery(inline_query_id: string, results: Array<any>, cache_time?: number): Promise<any>;
+
     onText(regexp: any, callback: ((msg: any, match: any[]) => void)): void;
     on(eventName: string, callback: ((msg: Message | ApiMessage) => void)): void;
     setWebHook(url: string, options?: any): Promise<any>;
-    answerCallbackQuery(chatId: number | string, text: string, inline:boolean): Promise<any>;
-    
+    answerCallbackQuery(chatId: number | string, text: string, inline: boolean): Promise<any>;
 }

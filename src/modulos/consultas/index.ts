@@ -1,5 +1,5 @@
-//export * from './index';
 export * from './extracto';
+export * from './saldos';
 
 import { bot } from '../../initBot';
 
@@ -82,7 +82,7 @@ export namespace Index {
             });
         }
 
-        export const onConsultas = (msg: Message, update?:boolean) => {
+        export const onConsultas = (msg: Message, update?: boolean) => {
             Data.Chats.getChat(msg).then((chatModel: ChatModel) => {
                 sendMessage(msg, update);
             });
