@@ -32,14 +32,20 @@ export namespace Productos {
                         continue;
                     }
 
-                    let saldo = productosDeCliente[i].saldo == null ? '0': productosDeCliente[i].saldo.toString();
+                    let saldo = productosDeCliente[i].saldo == null ? '0' : productosDeCliente[i].saldo.toString();
 
+                    let fechaHoy = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+                    
                     productos.push({
                         id: productosDeCliente[i].id.toString(),
                         type: 'article',
                         title: productosBanco[productosDeCliente[i].idProducto].nombre,
                         input_message_content: {
-                            message_text: productosBanco[productosDeCliente[i].idProducto].nombre + ", Saldo: $" + saldo
+                            message_text: `<b>Banco. KodeFest8.</b> 
+Consulta Saldo. 
+${productosBanco[productosDeCliente[i].idProducto].nombre} Saldo: $${saldo}
+Fecha ${fechaHoy}`,
+                            parse_mode: 'HTML'
                         },
                         description: "Saldo: $" + saldo,
                         thumb_url: productosBanco[productosDeCliente[i].idProducto].icono

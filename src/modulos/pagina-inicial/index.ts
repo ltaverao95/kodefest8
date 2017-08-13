@@ -25,17 +25,17 @@ export namespace index {
 
             bot.sendMessage(
                 msg.chat.id,
-                `✅ Ahora ingresa tu clave de acceso (Contraseña: Cualquier valor es válido)`,
+                `✅ Ingresa el código temporal que acabaste de recibir via SMS (<i>Cualquier valor es valido</i>)`,
                 messageOptions
             );
         };
 
         export const enviarMensajeClaveIncorrecta = (msg: Message) => {
-            bot.sendMessage(msg.chat.id, `❌ La contraseña que ingresaste es incorrecta, vuelve a intentarlo.`);
+            bot.sendMessage(msg.chat.id, `❌ La código que ingresaste es incorrecto, vuelve a intentarlo.`);
         };
 
         export const enviarMensajeClaveInvalida = (msg: Message) => {
-            bot.sendMessage(msg.chat.id, `❌ La contraseña que ingresaste no es válida, esta debe tener sólo números.`);
+            bot.sendMessage(msg.chat.id, `❌ La código que ingresaste no es válido, este debe tener sólo números.`);
         };
     }
 

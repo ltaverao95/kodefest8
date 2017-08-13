@@ -24,8 +24,8 @@ export namespace AdquirirProducto {
 
     export namespace Metodos {
 
-        export const sendMessage = (msg: Message) => {
-            Data.Chats.actualizarChat(msg.chat.id, Contextos.AdquirirProducto.Index.index, Comandos.AdquirirProducto.Index.verProductosDisponibles).then(() => {
+        export const sendMessage = (chatId: number) => {
+            Data.Chats.actualizarChat(chatId, Contextos.AdquirirProducto.Index.index, Comandos.AdquirirProducto.Index.verProductosDisponibles).then(() => {
 
                 const messageOptions = {
                     reply_markup: {
@@ -40,11 +40,7 @@ export namespace AdquirirProducto {
                     } as ReplyKeyboardMarkup
                 } as SendMessageOptions;
 
-                bot.sendMessage(
-                    msg.chat.id,
-                    `Selecciona uno de los productos disponibles`,
-                    messageOptions
-                );
+                bot.sendMessage(chatId, `Selecciona uno de los productos disponibles`, messageOptions);
             });
         }
 
@@ -59,7 +55,7 @@ export namespace AdquirirProducto {
         }
 
         export const onAdquirirProducto = (msg: Message) => {
-            sendMessage(msg);
+            sendMessage(msg.chat.id);
         }
     }
 
@@ -74,6 +70,7 @@ export namespace AdquirirProducto {
                 }
 
                 if (msg.text.indexOf(Comandos.PaginaInicial.MenuPrincipal.adquirirProducto) === 0) {
+                    console.log("debug 1");
                     Metodos.onAdquirirProducto(msg);
                 } else {
                     Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
@@ -88,7 +85,7 @@ export namespace AdquirirProducto {
                             if (Validaciones.esNumeroRequeridoValido(msg.text)) {
                                 let saldo = parseFloat(msg.text);
 
-                                if (saldo > 0) {
+                                if (saldo >= 0) {
                                     Data.Productos.updateSaldoProducto(msg.from.id, chat.datosComando, saldo);
                                     Metodos.sendSuccessMessage(msg, `Tu producto se ha configurado satisfactoriamente`);
                                 } else {
@@ -118,14 +115,13 @@ export namespace AdquirirProducto {
                         chat.comando.indexOf(Comandos.AdquirirProducto.Index.verProductosDisponibles) === 0) {
 
                         Data.Productos.getProductosPorAdquirirByClienteArticles(msg.from.id).then((productos: Array<any>) => {
-
                             let productosPorAdquirir = productos;
 
                             if (!productosPorAdquirir || productosPorAdquirir.length === 0) {
                                 productosPorAdquirir.push({
                                     id: '-1',
                                     type: 'article',
-                                    title: 'Veo que ya has adquirido todos nuestros productos',
+                                    title: 'Al parecer ya has adquirido todos nuestros productos',
                                     input_message_content: {
                                         message_text: `Gracias por confiar en nosotros`,
                                     },
@@ -154,7 +150,6 @@ export namespace AdquirirProducto {
                         chat.comando.indexOf(Comandos.AdquirirProducto.Index.verProductosDisponibles) === 0) {
 
                         if (msg.result_id == -1) {
-                            Data.Chats.actualizarChat(msg.from.id, Contextos.PaginaInicial.menuPrincipal, '');
                             return;
                         }
 

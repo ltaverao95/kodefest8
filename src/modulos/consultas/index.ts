@@ -51,12 +51,6 @@ export namespace Index {
                             ],
                             [
                                 {
-                                    text: Options.Movimientos,
-                                    callback_data: 'lkj'
-                                }
-                            ],
-                            [
-                                {
                                     text: Options.Volver,
                                     callback_data: Contextos.PaginaInicial.menuPrincipal
                                 }
