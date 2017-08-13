@@ -9,16 +9,11 @@ import { ChatModel } from "../../core/models";
 import {
     Contextos,
     Comandos,
-    Constants,
     ServicioModel
 } from '../../core';
 import { ApiMessage } from "../../api/ApiMessage";
 import { EditMessageTextOptions } from "../../bot/EditMessageTextOptions";
 import { InlineKeyboardMarkup } from "../../bot/InlineKeyboardMarkup";
-
-import {
-    InscribirCuentaServicios
-} from './inscribir-cuenta-servicios';
 
 export namespace PagarServicios {
 
@@ -96,8 +91,33 @@ export namespace PagarServicios {
 
                 Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
 
-                    if (chat.contexto.indexOf(Contextos.Facturas.InscribirCuentaServicios.seleccionServicio) === 0) {
+                    if (chat.contexto.indexOf(Contextos.Facturas.PagarServicio.pagarServicio) === 0) {
+                        Data.Clientes.getEmpresasInscritasFromCliente({ chat: { id: msg.from.id } } as Message).then((empresasInscritasByCliente: Array<ServicioModel>) => {
 
+                            let serviciosInscritosList = [];
+
+                            if (empresasInscritasByCliente.length == 0) {
+                                return;
+                            }
+
+                            for (var i = 0; i < empresasInscritasByCliente.length; i++) {
+
+                                serviciosInscritosList.push({
+                                    id: !empresasInscritasByCliente[i].id ? '' : empresasInscritasByCliente[i].id,
+                                    type: 'article',
+                                    title: !empresasInscritasByCliente[i].nombre ? '' : empresasInscritasByCliente[i].nombre,
+                                    description: !empresasInscritasByCliente[i].descripcion ? '' : empresasInscritasByCliente[i].descripcion,
+                                    input_message_content: {
+                                        message_text: `${!empresasInscritasByCliente[i].nombre ? '' : empresasInscritasByCliente[i].nombre} seleccionada`
+                                    },
+                                    thumb_url: !empresasInscritasByCliente[i].icono ? '' : empresasInscritasByCliente[i].icono
+                                });
+                            }
+
+                            bot.answerInlineQuery(msg.id, serviciosInscritosList, {
+                                cache_time: '10'
+                            });
+                        });
                     }
                 });
             });
@@ -108,7 +128,26 @@ export namespace PagarServicios {
                     return;
                 }
 
-                
+                if (!msg.result_id) {
+                    return;
+                }
+
+                Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
+
+                    if (chat.contexto.indexOf(Contextos.Facturas.PagarServicio.pagarServicio) === 0) {
+                        Data.EmpresaServicio.getEmpresaServiciosById(msg.from.id, msg.result_id).then((snapshot: any) => {
+                            if (!snapshot.val()) {
+                                return;
+                            }
+
+                            Data.Clientes.setEmpresasInscritasToCliente({
+                                chat: {
+                                    id: msg.from.id
+                                }
+                            } as Message, msg.result_id, snapshot.val())
+                        });
+                    }
+                });
             });
         }
     }
