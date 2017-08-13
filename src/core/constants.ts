@@ -58,7 +58,6 @@ export namespace Constants {
             export namespace AdquirirProducto {
                 export namespace Index {
                     export const index = 'AdquirirProducto/index';
-                    export const confirmar = 'AdquirirProducto/confirmar';
                 }
             }
 
@@ -122,8 +121,6 @@ export namespace Constants {
             export namespace AdquirirProducto {
                 export namespace Index {
                     export const verProductosDisponibles = 'verProductosDisponibles';
-                    export const confirmarSi = 'confirmarSi';
-                    export const confirmarNo = 'confirmarNo';
                     export const setSaldoInicial = 'setSaldoInicial';
                     export const volver = 'volver';
                 }
