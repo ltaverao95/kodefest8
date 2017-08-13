@@ -13,4 +13,5 @@ export interface EditMessageTextOptions {
     message_id: number | string;
     chat_id: number;
     reply_markup:InlineKeyboardMarkup;
+    parse_mode:string;
 }

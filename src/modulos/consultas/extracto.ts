@@ -6,7 +6,8 @@ import { bot } from '../../initBot';
 import * as Data from '../../data';
 import {
     Contextos,
-    Comandos
+    Comandos,
+    ChatModel
 } from '../../core';
 import { ApiMessage } from "../../api/ApiMessage";
 import { EditMessageReplyMarkupOptions } from "../../bot/EditMessageReplyMarkupOptions";
@@ -32,9 +33,14 @@ export namespace Extracto {
         Volver = '<< Volver',
     }
 
+    const nombresMeses = {
+        [Comandos.Consultas.Extracto.ene]: 'Enero',
+        [Comandos.Consultas.Extracto.feb]: 'Febrero',
+    };
+
     export namespace Metodos {
 
-        export const sendMessage = (msg: Message, update?: boolean) => {
+        export const sendMessageSeleccionarMes = (msg: Message, update?: boolean) => {
 
             Data.Chats.actualizarChat(msg, Contextos.Consultas.Extracto.seleccionMes, "").then(() => {
 
@@ -79,19 +85,53 @@ export namespace Extracto {
                     return;
                 }
 
-                bot.editMessageText(`Elige un mes para consultar`, {
+                bot.editMessageText(`📅 Elige un mes para consultar`, {
                     message_id: msg.message_id,
                     chat_id: msg.chat.id,
-                    reply_markup:messageOptions.reply_markup
-                } as EditMessageTextOptions);                
+                    reply_markup: messageOptions.reply_markup
+                } as EditMessageTextOptions);
             });
         }
-        
-        export const onOperacionProducto = (msg: ApiMessage) => {
-            sendMessage(msg.message, true);
+
+        export const sendMessageReporteXMes = (msg: Message, mes: string) => {
+
+            Data.Chats.actualizarChat(msg, Contextos.Consultas.Extracto.reporte, "").then(() => {
+
+                const messageOptions = {
+                    parse_mode: 'HTML',
+                    message_id: msg.message_id,
+                    chat_id: msg.chat.id,
+                    reply_markup: {
+                        inline_keyboard: [
+                            [
+                                { text: Options.Volver, callback_data: Contextos.Consultas.Extracto.operacionProducto }
+                            ]
+
+                        ] as ReplyKeyboardMarkup
+                    } as InlineKeyboardMarkup
+                } as EditMessageTextOptions;
+
+                let fechaHoy = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+
+                let textoMensaje = 
+`<b>Banco. KodeFest8</b>, ${fechaHoy}
+<b>Cliente:</b>, ${fechaHoy}
+Has elegido: ${nombresMeses[mes]}`;
+
+                bot.editMessageText(textoMensaje, messageOptions);
+            });
         }
+
+        export const onOperacionProducto = (msg: ApiMessage) => {
+            sendMessageSeleccionarMes(msg.message, true);
+        }
+
+        export const onSelectMes = (msg: ApiMessage, mes: string) => {
+            sendMessageReporteXMes(msg.message, mes);
+        }
+
     }
-        
+
     export namespace eventHandlers {
 
         export const listen = () => {
@@ -111,6 +151,17 @@ export namespace Extracto {
                 if (msg.data.indexOf(Contextos.Consultas.Extracto.operacionProducto) === 0) {
                     Metodos.onOperacionProducto(msg);
                 }
+
+                Data.Chats.getChat(msg.message).then((chat: ChatModel) => {
+
+                    if (chat.contexto != Contextos.Consultas.Extracto.seleccionMes) {
+                        return;
+                    }
+
+                    if (msg.data.indexOf(Comandos.Consultas.Extracto.ene) === 0) {
+                        Metodos.onSelectMes(msg, Comandos.Consultas.Extracto.ene);
+                    }
+                })
             });
         }
     }
