@@ -68,6 +68,8 @@ export namespace Constants {
 
                 export namespace PagarServicio {
                     export const pagarServicio = 'Facturas/PagarServicio/pagarServicio';
+                    export const seleccionarServicio = 'Facturas/PagarServicio/seleccionarServicio';
+                    export const seleccionarProducto = 'Facturas/PagarServicio/seleccionarProducto';
                 }
 
                 export namespace InscribirCuentaServicios {
@@ -130,6 +132,12 @@ export namespace Constants {
                 export namespace Index {
                     export const pagarServicios = 'pagarServicios';
                     export const inscribirCuentaServicios = 'inscribirCuentaServicios';
+                    export const volver = 'volver';
+                }
+
+                export namespace PagarServicios {
+                    export const seleccionarServicio = 'seleccionarServicio';
+                    export const seleccionarProducto = 'seleccionarProducto';
                     export const volver = 'volver';
                 }
 

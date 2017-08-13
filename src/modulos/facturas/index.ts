@@ -35,13 +35,13 @@ export namespace index {
                             [
                                 {
                                     text: Options.PagarServicios,
-                                    callback_data: Contextos.Facturas.PagarServicio.pagarServicio
+                                    switch_inline_query_current_chat: Contextos.Facturas.PagarServicio.pagarServicio
                                 }
                             ],
                             [
                                 {
                                     text: Options.InscribirCuentaServicios,
-                                    callback_data: Contextos.Facturas.InscribirCuentaServicios.seleccionServicio
+                                    switch_inline_query_current_chat: Contextos.Facturas.InscribirCuentaServicios.seleccionServicio
                                 }
                             ],
                             [

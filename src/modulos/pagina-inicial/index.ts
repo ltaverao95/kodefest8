@@ -25,7 +25,7 @@ export namespace index {
 
             bot.sendMessage(
                 msg.chat.id,
-                `✅ Ahora ingresa tu clave de acceso (Contraseña: 123)`,
+                `✅ Ahora ingresa tu clave de acceso (Contraseña: Cualquier valor es válido)`,
                 messageOptions
             );
         };
@@ -53,14 +53,10 @@ export namespace index {
                 Data.Chats.getChat(msg).then((chat: ChatModel) => {
                     if (chat.contexto == Contextos.PaginaInicial.index
                         && chat.comando == Comandos.PaginaInicial.Index.getClave) {
-                        if (Validaciones.esNumeroRequeridoValido(msg.text)) {
-                            if (msg.text === "123") {
-                                MenuPrincipalImpl.Metodos.sendMessage(msg);
-                            } else {
-                                Metodos.enviarMensajeClaveIncorrecta(msg);
-                            }
+                        if (msg.text) {
+                            MenuPrincipalImpl.Metodos.sendMessage(msg);
                         } else {
-                            Metodos.enviarMensajeClaveInvalida(msg);
+                            Metodos.enviarMensajeClaveIncorrecta(msg);
                         }
                     }
                 });
