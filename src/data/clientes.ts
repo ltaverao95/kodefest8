@@ -1,5 +1,6 @@
 import { Message } from "../bot/Message";
 import { dataBase } from '../initDatabase';
+import { getListFromFirebaseObject } from './common';
 import { ServicioModel } from "../core/models";
 
 export namespace Clientes {
@@ -18,7 +19,13 @@ export namespace Clientes {
     }
 
     export const getEmpresasInscritasFromCliente = (msg: Message): Promise<any> => {
-        return dataBase.ref('clientes/' + msg.chat.id + '/empresasInscritas').once("value");
+        return dataBase.ref('clientes/' + msg.chat.id + '/empresasInscritas').once("value")
+            .then((snapshot: any) => {
+                return getListFromFirebaseObject<ServicioModel>(snapshot.val());
+            })
+            .catch((error: any) => {
+                console.log("EmpresaServicio/getEmpresaServicios" + error);
+            });
     }
 
     export const setEmpresasInscritasToCliente = (msg: Message, empresaInscritaId: number | string, empresaInscrita: ServicioModel): Promise<any> => {

@@ -11,22 +11,18 @@ export namespace InscribirCuentaServicios {
                 chat: {
                     id: chatId
                 }
-            } as Message).then((snapshot: any) => {
-                let ListaEmpresasDeServiciosAsociadosACliente = snapshot.val();
+            } as Message).then((listaEmpresasDeServiciosAsociadosACliente: Array<ServicioModel>) => {
                 let empresasInscritasByClienteList = new Array<ServicioModel>();
 
-                if (!ListaEmpresasDeServiciosAsociadosACliente) {
+                if (!listaEmpresasDeServiciosAsociadosACliente) {
                     empresasInscritasByClienteList = ListaEmpresaDeServicios;
                     return empresasInscritasByClienteList;
                 }
 
                 for (let i = 0; i < ListaEmpresaDeServicios.length; i++) {
 
-                    let result = ListaEmpresasDeServiciosAsociadosACliente.find((empresa: any) => empresa.nombre === ListaEmpresaDeServicios[i].empresa);
-                    if(result){
-                        empresasInscritasByClienteList.push({
-                            empresa: "dummy"
-                        } as ServicioModel);
+                    let empresaAsociadaResultado = listaEmpresasDeServiciosAsociadosACliente.find((empresa: ServicioModel) => empresa.id == ListaEmpresaDeServicios[i].id);
+                    if(empresaAsociadaResultado){
                         continue;
                     }
 

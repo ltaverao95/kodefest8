@@ -48,7 +48,7 @@ export interface MovimientoModel extends IModel {
 
 export interface ServicioModel extends IModel {
     id: string | number;
-    empresa: string;
+    nombre: string;
     descripcion: string;
     icono: string;
 }

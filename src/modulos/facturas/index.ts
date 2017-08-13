@@ -1,5 +1,6 @@
 export * from './inscribir-cuenta';
 export * from './inscribir-cuenta-servicios';
+export * from './pagar-servicio';
 
 import { bot } from '../../initBot';
 import * as Data from '../../data';
