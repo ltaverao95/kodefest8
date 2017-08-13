@@ -42,7 +42,7 @@ export namespace Extracto {
 
         export const sendMessageSeleccionarMes = (msg: Message, update?: boolean) => {
 
-            Data.Chats.actualizarChat(msg, Contextos.Consultas.Extracto.seleccionMes, "").then(() => {
+            Data.Chats.actualizarChat(msg.chat.id, Contextos.Consultas.Extracto.seleccionMes, "").then(() => {
 
                 const messageOptions = {
                     reply_markup: {
@@ -95,7 +95,7 @@ export namespace Extracto {
 
         export const sendMessageReporteXMes = (msg: Message, mes: string) => {
 
-            Data.Chats.actualizarChat(msg, Contextos.Consultas.Extracto.reporte, "").then(() => {
+            Data.Chats.actualizarChat(msg.chat.id, Contextos.Consultas.Extracto.reporte, "").then(() => {
 
                 const messageOptions = {
                     parse_mode: 'HTML',

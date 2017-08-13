@@ -32,14 +32,16 @@ export namespace Productos {
                         continue;
                     }
 
+                    let saldo = productosDeCliente[i].saldo == null ? '0': productosDeCliente[i].saldo.toString();
+
                     productos.push({
                         id: productosDeCliente[i].id.toString(),
                         type: 'article',
                         title: productosBanco[productosDeCliente[i].idProducto].nombre,
                         input_message_content: {
-                            message_text: productosBanco[productosDeCliente[i].idProducto].nombre + ", Saldo: $" + productosDeCliente[i].saldo
+                            message_text: productosBanco[productosDeCliente[i].idProducto].nombre + ", Saldo: $" + saldo
                         },
-                        description: "Saldo: $" + productosDeCliente[i].saldo.toString(),
+                        description: "Saldo: $" + saldo,
                         thumb_url: productosBanco[productosDeCliente[i].idProducto].icono
                     })
                 }
@@ -49,7 +51,7 @@ export namespace Productos {
         });
     }
 
-    export const getProductosPorAdquirirByClienteArticles = (chatId: number): Promise<any> => {
+    export const getProductosPorAdquirirByClienteArticles = (chatId: number): Promise<Array<any>> => {
         return getProductosPorAdquirirByCliente(chatId).then((productosPorAdquirir: Array<ProductoBanco>) => {
 
             let articles = [];

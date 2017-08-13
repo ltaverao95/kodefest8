@@ -20,8 +20,8 @@ export namespace Chats {
         return dataBase.ref('chats/' + chatId + '/datosComando').set(datosComando);
     }
 
-    export const actualizarChat = (msg: Message, contexto: string, comando: string): Promise<any> => {
-        return dataBase.ref('chats/' + msg.chat.id).set({
+    export const actualizarChat = (chatId: number, contexto: string, comando: string): Promise<any> => {
+        return dataBase.ref('chats/' + chatId).set({
             contexto,
             comando
         });

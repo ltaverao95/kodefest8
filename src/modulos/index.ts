@@ -36,7 +36,7 @@ export namespace index {
 
         export const solicitarClave = (msg: Message) => {
 
-            Data.Chats.actualizarChat(msg, Contextos.PaginaInicial.index, Comandos.PaginaInicial.Index.getClave).then(() => {
+            Data.Chats.actualizarChat(msg.chat.id, Contextos.PaginaInicial.index, Comandos.PaginaInicial.Index.getClave).then(() => {
                 paginaInicialIndex.Metodos.sendMessage(msg);
             });
         };
@@ -48,7 +48,7 @@ export namespace index {
 
             bot.onText(/^\/start$/, (msg: Message, match: any) => {
 
-                Data.Chats.actualizarChat(msg, Contextos.PaginaInicial.index, Comandos.PaginaInicial.Index.getUsuario).then(() => {
+                Data.Chats.actualizarChat(msg.chat.id, Contextos.PaginaInicial.index, Comandos.PaginaInicial.Index.getUsuario).then(() => {
                     Metodos.sendMessage(msg);
                 });
             });

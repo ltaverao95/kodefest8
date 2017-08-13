@@ -22,31 +22,32 @@ export namespace Saldo {
 
             bot.on('inline_query', (msg: ApiMessage) => {
 
-                if (!msg) {
+                if (!msg.query) {
                     return;
                 }
 
                 if (msg.query.indexOf(Contextos.Consultas.Saldos.saldos) === 0) {
                     Data.Productos.getProductosByCliente(msg.from.id).then((products) => {
-
+                        
                         bot.answerInlineQuery(
                             msg.id,
                             products,
                             {
-                                cache_time: '10'
+                                cache_time: '0'
                             }
                         );
                     });
                 }
             });
 
-            /*
-                bot.on('chosen_inline_result', (msg: ApiMessage) => {
-                    console.log('chosen_inline_result');
-                    console.log(JSON.stringify(msg));
-                    bot.sendMessage(msg.from.id, `result selected id: ` + msg.result_id);
-                });
-            */
+            bot.on('chosen_inline_result', (msg: ApiMessage) => {
+
+                if (msg.result_id == -1) {
+                    return;
+                }
+
+            });
+
         }
 
     }

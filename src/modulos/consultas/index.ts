@@ -33,7 +33,7 @@ export namespace Index {
 
         export const sendMessage = (msg: Message, update?: boolean) => {
 
-            Data.Chats.actualizarChat(msg, Contextos.Consultas.Index.index, "").then(() => {
+            Data.Chats.actualizarChat(msg.chat.id, Contextos.Consultas.Index.index, "").then(() => {
                 const messageOptions = {
                     reply_markup: {
                         inline_keyboard: [

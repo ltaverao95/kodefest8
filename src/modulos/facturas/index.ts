@@ -28,7 +28,7 @@ export namespace index {
 
         export const sendMessage = (msg: Message, update?: boolean) => {
 
-            Data.Chats.actualizarChat(msg, Contextos.Facturas.Index.index, "").then(() => {
+            Data.Chats.actualizarChat(msg.chat.id, Contextos.Facturas.Index.index, "").then(() => {
                 const messageOptions = {
                     reply_markup: {
                         inline_keyboard: [

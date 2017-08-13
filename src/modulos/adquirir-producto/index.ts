@@ -25,7 +25,7 @@ export namespace AdquirirProducto {
     export namespace Metodos {
 
         export const sendMessage = (msg: Message) => {
-            Data.Chats.actualizarChat(msg, Contextos.AdquirirProducto.Index.index, Comandos.AdquirirProducto.Index.verProductosDisponibles).then(() => {
+            Data.Chats.actualizarChat(msg.chat.id, Contextos.AdquirirProducto.Index.index, Comandos.AdquirirProducto.Index.verProductosDisponibles).then(() => {
 
                 const messageOptions = {
                     reply_markup: {
@@ -46,6 +46,12 @@ export namespace AdquirirProducto {
                     messageOptions
                 );
             });
+        }
+
+        export const sendSuccessMessage = (msg: Message, sucessMessage: string) => {
+            Data.Chats.actualizarChat(msg.chat.id, Contextos.PaginaInicial.menuPrincipal, '').then(
+                bot.sendMessage(msg.chat.id, `✅ ${sucessMessage}`)
+            );
         }
 
         export const sendErrorMessage = (msg: Message, errorMessage: string) => {
@@ -84,6 +90,7 @@ export namespace AdquirirProducto {
 
                                 if (saldo > 0) {
                                     Data.Productos.updateSaldoProducto(msg.from.id, chat.datosComando, saldo);
+                                    Metodos.sendSuccessMessage(msg, `Tu producto se ha configurado satisfactoriamente`);
                                 } else {
                                     Metodos.sendErrorMessage(msg, `El saldo inicial no puede ser negativo, por favor ingresa nuevamente el valor`);
                                 }
@@ -110,12 +117,28 @@ export namespace AdquirirProducto {
                     if (chat.contexto.indexOf(Contextos.AdquirirProducto.Index.index) === 0 &&
                         chat.comando.indexOf(Comandos.AdquirirProducto.Index.verProductosDisponibles) === 0) {
 
-                        Data.Productos.getProductosPorAdquirirByClienteArticles(msg.from.id).then((productosPorAdquirir) => {
+                        Data.Productos.getProductosPorAdquirirByClienteArticles(msg.from.id).then((productos: Array<any>) => {
+
+                            let productosPorAdquirir = productos;
+
+                            if (!productosPorAdquirir || productosPorAdquirir.length === 0) {
+                                productosPorAdquirir.push({
+                                    id: '-1',
+                                    type: 'article',
+                                    title: 'Veo que ya has adquirido todos nuestros productos',
+                                    input_message_content: {
+                                        message_text: `Gracias por confiar en nosotros`,
+                                    },
+                                    description: 'Gracias por confiar en nosotros',
+                                    thumb_url: 'http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/48/Thumb-up-icon.png'
+                                });
+                            }
+
                             bot.answerInlineQuery(
                                 msg.id,
                                 productosPorAdquirir,
                                 {
-                                    cache_time: '10'
+                                    cache_time: '0'
                                 }
                             );
                         });
@@ -130,11 +153,17 @@ export namespace AdquirirProducto {
                     if (chat.contexto.indexOf(Contextos.AdquirirProducto.Index.index) === 0 &&
                         chat.comando.indexOf(Comandos.AdquirirProducto.Index.verProductosDisponibles) === 0) {
 
+                        if (msg.result_id == -1) {
+                            Data.Chats.actualizarChat(msg.from.id, Contextos.PaginaInicial.menuPrincipal, '');
+                            return;
+                        }
+
                         Data.Chats.guardarComandoByChatId(msg.from.id, Comandos.AdquirirProducto.Index.setSaldoInicial);
 
                         Data.Productos.saveProductosCliente(msg.from.id, {
                             idProducto: msg.result_id,
-                            numero: Validaciones.generarGUID()
+                            numero: Validaciones.generarGUID(),
+                            saldo: 0
                         } as ProductoModel);
 
                         Data.Productos.getProductoClienteByProductoBancoId(msg.from.id, msg.result_id).then((productoCliente: ProductoModel) => {
