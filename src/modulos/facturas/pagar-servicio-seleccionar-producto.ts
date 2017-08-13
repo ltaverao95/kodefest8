@@ -22,7 +22,7 @@ import { PagarServicioSeleccionado } from './pagar-servicio-seleccionado';
 export namespace PagarServiciosSeleccionarProducto {
 
     export enum Options {
-        SeleccionarProducto = "Ver medios de pago",
+        SeleccionarProducto = "Seleccionar medio de pago",
         Volver = "<< Volver"
     }
 

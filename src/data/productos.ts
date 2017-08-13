@@ -133,14 +133,14 @@ Fecha ${fechaHoy}`,
             });
     }
 
-    export const getProductoClienteById = (chatId: number | string, idProducto: number | string): Promise<ProductoBanco> => {
+    export const getProductoClienteById = (chatId: number | string, idProducto: number | string): Promise<ProductoModel> => {
         return dataBase.ref('clientes/' + chatId + '/productos/' + idProducto).once('value')
             .then((snapshot: any) => {
                 if(!snapshot.val()){
                     return null;
                 }
 
-                return snapshot.val() as ProductoBanco;
+                return snapshot.val() as ProductoModel;
             })
             .catch((error: any) => {
                 console.log("Productos/getProductoBancoById" + error);

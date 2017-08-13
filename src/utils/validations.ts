@@ -48,4 +48,11 @@ export namespace Validaciones {
             return v.toString(16);
         });
     }
+
+    export const generarFecha = (fecha: number) => {
+        var myObj = JSON.parse('{"date_created":"' + fecha + '"}'),
+            myDate = new Date(1000 * myObj.date_created);
+
+        return myDate.toLocaleString('Es-es');
+    }
 }

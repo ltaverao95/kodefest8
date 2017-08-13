@@ -56,15 +56,6 @@ export namespace Saldo {
                     });
                 }
             });
-
-            bot.on('chosen_inline_result', (msg: ApiMessage) => {
-
-                if (msg.result_id == -1) {
-                    return;
-                }
-
-            });
-
         }
 
     }
