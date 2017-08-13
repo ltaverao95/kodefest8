@@ -25,6 +25,13 @@ export interface ProductoModel {
     saldo: number;
     movimientos: Array<MovimientoModel>;
     saldosMensuales: Array<SaldoMensualModel>;
+    confirmado: boolean;
+}
+
+export interface ProductoBanco {
+    id: number,
+    icono: string,
+    nombre: string
 }
 
 export interface MovimientoModel {

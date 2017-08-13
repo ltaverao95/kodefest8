@@ -24,6 +24,7 @@ export namespace MenuPrincipal {
                         one_time_keyboard: true,
                         keyboard: [
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.consultas }],
+                            [{ text: Comandos.PaginaInicial.MenuPrincipal.adquirirProducto }],
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.facturas }],
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.transferencias }],
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.configuracion }]

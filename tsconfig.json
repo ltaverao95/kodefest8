@@ -1,11 +1,14 @@
 {
-  "compilerOptions": {    
+  "compilerOptions": {
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
     "strict": true,
     "sourceMap": false,
-    "watch": true
+    "watch": true,
+    "lib":[
+      "es6"
+    ]
   },
   "exclude": [
     "node_modules"

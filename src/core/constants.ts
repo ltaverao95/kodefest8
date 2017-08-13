@@ -55,6 +55,13 @@ export namespace Constants {
                 }
             }
 
+            export namespace AdquirirProducto {
+                export namespace Index {
+                    export const index = 'AdquirirProducto/index';
+                    export const confirmar = 'AdquirirProducto/confirmar';
+                }
+            }
+
             export namespace Facturas {
                 export namespace Index {
                     export const index = 'Facturas/index';
@@ -79,6 +86,7 @@ export namespace Constants {
                 }
                 export namespace MenuPrincipal {
                     export const consultas = '🔍 Consultas';
+                    export const adquirirProducto = '📂 Adquirir producto';
                     export const facturas = '📄 Facturas';
                     export const transferencias = '💳 Transferencias';
                     export const configuracion = '⚙️ Configuración';
@@ -107,6 +115,16 @@ export namespace Constants {
                     export const oct = 'oct';
                     export const nov = 'nov';
                     export const dic = 'dic';
+                    export const volver = 'volver';
+                }
+            }
+
+            export namespace AdquirirProducto {
+                export namespace Index {
+                    export const verProductosDisponibles = 'verProductosDisponibles';
+                    export const confirmarSi = 'confirmarSi';
+                    export const confirmarNo = 'confirmarNo';
+                    export const setSaldoInicial = 'setSaldoInicial';
                     export const volver = 'volver';
                 }
             }

@@ -40,12 +40,13 @@ export namespace Saldo {
                 }
             });
 
-            bot.on('chosen_inline_result', (msg: ApiMessage) => {
-                console.log('chosen_inline_result');
-                console.log(JSON.stringify(msg));
-                bot.sendMessage(msg.from.id, `result selected id: ` + msg.result_id);
-            });
-
+            /*
+                bot.on('chosen_inline_result', (msg: ApiMessage) => {
+                    console.log('chosen_inline_result');
+                    console.log(JSON.stringify(msg));
+                    bot.sendMessage(msg.from.id, `result selected id: ` + msg.result_id);
+                });
+            */
         }
 
     }
