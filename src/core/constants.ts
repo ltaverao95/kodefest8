@@ -76,7 +76,14 @@ export namespace Constants {
                     export const seleccionServicio = 'Facturas/InscribirCuentaServicios/seleccionServicio';
                 }
             }
-        }
+
+            export namespace Transferencias {
+                export namespace Index {
+                    export const index = 'Transferencias/index';
+                }
+            }
+            
+        }        
 
         export namespace Comandos {
 
@@ -145,6 +152,13 @@ export namespace Constants {
                     export const volver = 'volver';
                 }
             }
+
+            export namespace Transferencias {
+                export namespace Index {
+                    export const TransferirAUnAmigo = 'Transferencias/TransferirAUnAmigo';
+                }
+            }
+            
         }
     }
 
