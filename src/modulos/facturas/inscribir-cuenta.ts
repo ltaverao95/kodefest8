@@ -109,7 +109,7 @@ export namespace InscribirCuentaServicio {
                                     title: serviciosResponseList[i].empresa,
                                     description: serviciosResponseList[i].descripcion,
                                     input_message_content: {
-                                        message_text:`${serviciosResponseList[i].empresa} seleccionada`
+                                        message_text: `${serviciosResponseList[i].empresa} seleccionada`
                                     },
                                     thumb_url: serviciosResponseList[i].icono
                                 });
@@ -125,18 +125,25 @@ export namespace InscribirCuentaServicio {
 
             bot.on('chosen_inline_result', (msg: ApiMessage) => {
 
-                console.log(msg);
+                if (!msg) {
+                    return;
+                }
 
-                Data.EmpresaServicio.getEmpresaServiciosById(msg.from.id, msg.result_id).then((snapshot: any) => {
-                    if(!snapshot.val()){
-                        return;
+                Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
+
+                    if (chat.contexto.indexOf(Contextos.Facturas.InscribirCuentaServicios.seleccionServicio) === 0) {
+                        Data.EmpresaServicio.getEmpresaServiciosById(msg.from.id, msg.result_id).then((snapshot: any) => {
+                            if (!snapshot.val()) {
+                                return;
+                            }
+
+                            Data.Clientes.setEmpresasInscritasToCliente({
+                                chat: {
+                                    id: msg.from.id
+                                }
+                            } as Message, msg.result_id, snapshot.val())
+                        });
                     }
-
-                    Data.Clientes.setEmpresasInscritasToCliente({
-                        chat: {
-                            id: msg.from.id
-                        }
-                    } as Message, msg.result_id, snapshot.val())
                 });
             });
         }
