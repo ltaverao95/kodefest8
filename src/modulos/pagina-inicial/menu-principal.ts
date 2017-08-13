@@ -12,8 +12,6 @@ import {
 } from '../../core';
 import { ApiMessage } from "../../api/ApiMessage";
 
-import { Index as ConsultasImpl } from '../consultas';
-
 export namespace MenuPrincipal {
 
     export namespace Metodos {

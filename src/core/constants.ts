@@ -20,7 +20,15 @@ export namespace Constants {
         CuentaCorriente = 'CuentaCorriente.png',
         TarjetaDebito = 'TarjetaDebito.png'
     }
-    
+
+    export enum ServiciosEnum {
+        AguasManizales = 'Aguas de Manizales',
+        GasNatural = 'Gas Natural',
+        Une = 'Une',
+        Tigo = 'Tigo',
+        Movistar = 'Movistar'
+    }
+
     export namespace Chat {
 
         export namespace Contextos {
@@ -44,7 +52,21 @@ export namespace Constants {
                     export const operacionProducto = 'Consultas/Extracto/operacionProducto';
                     export const seleccionMes = 'Consultas/Extracto/seleccionMes';
                     export const reporte = 'Consultas/Extracto/reporte';
-                }                                                
+                }
+            }
+
+            export namespace Facturas {
+                export namespace Index {
+                    export const index = 'Facturas/index';
+                }
+
+                export namespace PagarServicio {
+                    export const pagarServicio = 'Facturas/PagarServicio/pagarServicio';
+                }
+
+                export namespace InscribirCuentaServicios {
+                    export const seleccionServicio = 'Facturas/InscribirCuentaServicios/seleccionServicio';
+                }
             }
         }
 
@@ -86,7 +108,19 @@ export namespace Constants {
                     export const nov = 'nov';
                     export const dic = 'dic';
                     export const volver = 'volver';
-                }                
+                }
+            }
+
+            export namespace Facturas {
+                export namespace Index {
+                    export const pagarServicios = 'pagarServicios';
+                    export const inscribirCuentaServicios = 'inscribirCuentaServicios';
+                    export const volver = 'volver';
+                }
+
+                export namespace InscribirCuentaServicios {
+                    export const volver = 'volver';
+                }
             }
         }
     }
