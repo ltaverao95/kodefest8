@@ -103,7 +103,6 @@ export namespace InscribirCuentaServicio {
                             let serviciosInscritosList = [];
 
                             for (var i = 0; i < serviciosResponseList.length; i++) {
-                                console.log(serviciosResponseList[i]);
                                 serviciosInscritosList.push({
                                     id: (i + 1).toString(),
                                     type: 'article',
