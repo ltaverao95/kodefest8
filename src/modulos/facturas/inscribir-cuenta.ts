@@ -64,7 +64,7 @@ export namespace InscribirCuentaServicio {
                                 title: serviciosResponseList[i].nombre,
                                 description: serviciosResponseList[i].descripcion,
                                 input_message_content: {
-                                    message_text: `${serviciosResponseList[i].nombre} seleccionada`
+                                    message_text: `✅ ${serviciosResponseList[i].nombre} inscrito con éxito!`
                                 },
                                 thumb_url: serviciosResponseList[i].icono
                             });

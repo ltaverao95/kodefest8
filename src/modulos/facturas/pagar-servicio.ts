@@ -55,7 +55,7 @@ export namespace PagarServicios {
                                 title: !empresasInscritasByCliente[i].nombre ? '' : empresasInscritasByCliente[i].nombre,
                                 description: !empresasInscritasByCliente[i].descripcion ? '' : empresasInscritasByCliente[i].descripcion,
                                 input_message_content: {
-                                    message_text: `${!empresasInscritasByCliente[i].nombre ? '' : empresasInscritasByCliente[i].nombre} seleccionada`
+                                    message_text: `✅ ${!empresasInscritasByCliente[i].nombre ? '' : empresasInscritasByCliente[i].nombre} seleccionada`
                                 },
                                 thumb_url: !empresasInscritasByCliente[i].icono ? '' : empresasInscritasByCliente[i].icono
                             });
