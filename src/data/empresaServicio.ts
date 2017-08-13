@@ -12,7 +12,7 @@ export namespace EmpresaServicio {
                 let empresaServicioResult = snapshot.val();
                 let empresaServicioResultList = new Array<ServicioModel>();
 
-                if(!empresaServicioResult){
+                if (!empresaServicioResult) {
                     return empresaServicioResultList;
                 }
 
@@ -20,7 +20,7 @@ export namespace EmpresaServicio {
                     empresaServicioResultList.push({
                         empresa: empresaServicioResult[i].nombre,
                         ...empresaServicioResult[i]
-                    } as ServicioModel);       
+                    } as ServicioModel);
                 }
 
                 return empresaServicioResultList;
@@ -28,5 +28,10 @@ export namespace EmpresaServicio {
             .catch((error: any) => {
                 console.log("EmpresaServicio/getEmpresaServicios" + error);
             });
+    }
+
+    export const getEmpresaServiciosById = (chatId: string | number, empresaServicioId: number | string): Promise<Array<ServicioModel>> => {
+
+        return dataBase.ref('empresaServicio/' + empresaServicioId).once('value');
     }
 }

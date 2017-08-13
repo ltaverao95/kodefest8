@@ -109,7 +109,7 @@ export namespace InscribirCuentaServicio {
                                     title: serviciosResponseList[i].empresa,
                                     description: serviciosResponseList[i].descripcion,
                                     input_message_content: {
-                                        message_text: 'contenido de opción 1'
+                                        message_text:`${serviciosResponseList[i].empresa} seleccionada`
                                     },
                                     thumb_url: serviciosResponseList[i].icono
                                 });
@@ -120,6 +120,23 @@ export namespace InscribirCuentaServicio {
                             });
                         });
                     }
+                });
+            });
+
+            bot.on('chosen_inline_result', (msg: ApiMessage) => {
+
+                console.log(msg);
+
+                Data.EmpresaServicio.getEmpresaServiciosById(msg.from.id, msg.result_id).then((snapshot: any) => {
+                    if(!snapshot.val()){
+                        return;
+                    }
+
+                    Data.Clientes.setEmpresasInscritasToCliente({
+                        chat: {
+                            id: msg.from.id
+                        }
+                    } as Message, msg.result_id, snapshot.val())
                 });
             });
         }
