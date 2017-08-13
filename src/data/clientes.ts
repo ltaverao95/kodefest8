@@ -1,5 +1,6 @@
 import { Message } from "../bot/Message";
 import { dataBase } from '../initDatabase';
+import { ServicioModel } from "../core/models";
 
 export namespace Clientes {
 
@@ -19,4 +20,9 @@ export namespace Clientes {
     export const getEmpresasInscritasFromCliente = (msg: Message): Promise<any> => {
         return dataBase.ref('clientes/' + msg.chat.id + '/empresasInscritas').once("value");
     }
+
+    export const setEmpresasInscritasToCliente = (msg: Message, empresaInscritaId: number | string, empresaInscrita: ServicioModel): Promise<any> => {
+        return dataBase.ref('clientes/' + msg.chat.id + '/empresasInscritas/' + empresaInscritaId).set(empresaInscrita);
+    }
+
 }
