@@ -1,6 +1,8 @@
 export * from './inscribir-cuenta';
 export * from './inscribir-cuenta-servicios';
 export * from './pagar-servicio';
+export * from './pagar-servicio-seleccionar-producto';
+export * from './pagar-servicio-seleccionado';
 
 import { bot } from '../../initBot';
 import * as Data from '../../data';

@@ -15,6 +15,8 @@ import { ApiMessage } from "../../api/ApiMessage";
 import { EditMessageTextOptions } from "../../bot/EditMessageTextOptions";
 import { InlineKeyboardMarkup } from "../../bot/InlineKeyboardMarkup";
 
+import { PagarServiciosSeleccionarProducto } from './pagar-servicio-seleccionar-producto';
+
 export namespace PagarServicios {
 
     export namespace Metodos {
@@ -79,7 +81,14 @@ export namespace PagarServicios {
                 }
 
                 if (msg.query.indexOf(Contextos.Facturas.PagarServicio.pagarServicio) === 0) {
-                    Data.Chats.actualizarDatoComando(msg.from.id, msg.result_id.toString());
+                    Data.Chats.actualizarDatoComando(msg.from.id, msg.result_id.toString()).then(() => {
+                        PagarServiciosSeleccionarProducto.Metodos.onPagarServiciosSeleccionarProducto({
+                            chat: {
+                                id: msg.from.id
+                            },
+                            message_id: msg.id
+                        } as Message);
+                    });
                 }
             });
         }

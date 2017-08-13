@@ -28,6 +28,20 @@ export namespace Clientes {
             });
     }
 
+    export const getServicioInscritoByCliente = (chatId: number | string, idServicio: number) => {
+        return dataBase.ref('clientes/' + chatId + '/empresasInscritas/' + idServicio).once('value')
+        .then((snapshot: any) => {
+            if(!snapshot.val()){
+                return null;
+            }
+
+            return snapshot.val() as ServicioModel;
+        })
+        .catch((error: any) => {
+            console.log("Productos/getProductoBancoById" + error);
+        });
+    }
+
     export const setEmpresasInscritasToCliente = (msg: Message, empresaInscritaId: number | string, empresaInscrita: ServicioModel): Promise<any> => {
         return dataBase.ref('clientes/' + msg.chat.id + '/empresasInscritas/' + empresaInscritaId).set(empresaInscrita);
     }
