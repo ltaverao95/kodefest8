@@ -45,6 +45,7 @@ export interface ServicioModel {
     empresa: string;
     descripcion: string;
     icono: string;
+    id: number;
 }
 
 export interface SaldoMensualModel {
