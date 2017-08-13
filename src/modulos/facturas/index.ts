@@ -1,4 +1,5 @@
-export * from './inscribir-cuenta-servicio';
+export * from './inscribir-cuenta';
+export * from './inscribir-cuenta-servicios';
 
 import { bot } from '../../initBot';
 import * as Data from '../../data';

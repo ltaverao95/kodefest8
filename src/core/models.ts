@@ -37,6 +37,7 @@ export interface MovimientoModel {
 export interface ServicioModel {
     empresa: string;
     descripcion: string;
+    icono: string;
 }
 
 export interface SaldoMensualModel {

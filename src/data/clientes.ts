@@ -15,4 +15,8 @@ export namespace Clientes {
         actualizarNombre(msg);
         return actualizarDocumento(msg, documento);
     }
+
+    export const getEmpresasInscritasFromCliente = (msg: Message): Promise<any> => {
+        return dataBase.ref('clientes/' + msg.chat.id + '/empresasInscritas').once("value");
+    }
 }
