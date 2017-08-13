@@ -18,7 +18,7 @@ export namespace Clientes {
         return actualizarDocumento(msg, documento);
     }
 
-    export const getEmpresasInscritasFromCliente = (msg: Message): Promise<any> => {
+    export const getEmpresasInscritasFromCliente = (msg: Message): Promise<Array<ServicioModel>> => {
         return dataBase.ref('clientes/' + msg.chat.id + '/empresasInscritas').once("value")
             .then((snapshot: any) => {
                 return getListFromFirebaseObject<ServicioModel>(snapshot.val());

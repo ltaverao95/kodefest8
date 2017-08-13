@@ -101,6 +101,10 @@ export namespace InscribirCuentaServicio {
                     return;
                 }
 
+                if(!msg.result_id){
+                    return;
+                }
+
                 Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
 
                     if (chat.contexto.indexOf(Contextos.Facturas.InscribirCuentaServicios.seleccionServicio) === 0) {
