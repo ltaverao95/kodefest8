@@ -26,8 +26,7 @@ export namespace MenuPrincipal {
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.consultas }],
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.adquirirProducto }],
                             [{ text: Comandos.PaginaInicial.MenuPrincipal.facturas }],
-                            [{ text: Comandos.PaginaInicial.MenuPrincipal.transferencias }],
-                            [{ text: Comandos.PaginaInicial.MenuPrincipal.configuracion }]
+                            [{ text: Comandos.PaginaInicial.MenuPrincipal.transferencias }]
                         ],
                     } as ReplyKeyboardMarkup
                 } as SendMessageOptions;

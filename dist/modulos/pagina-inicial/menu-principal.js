@@ -17,8 +17,7 @@ var MenuPrincipal;
                             [{ text: core_1.Comandos.PaginaInicial.MenuPrincipal.consultas }],
                             [{ text: core_1.Comandos.PaginaInicial.MenuPrincipal.adquirirProducto }],
                             [{ text: core_1.Comandos.PaginaInicial.MenuPrincipal.facturas }],
-                            [{ text: core_1.Comandos.PaginaInicial.MenuPrincipal.transferencias }],
-                            [{ text: core_1.Comandos.PaginaInicial.MenuPrincipal.configuracion }]
+                            [{ text: core_1.Comandos.PaginaInicial.MenuPrincipal.transferencias }]
                         ],
                     }
                 };
