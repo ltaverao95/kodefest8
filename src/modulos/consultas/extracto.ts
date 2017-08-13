@@ -93,6 +93,12 @@ export namespace Extracto {
             });
         }
 
+        export const sendMessageProductosCliente = (msg: Message) => {
+            Data.Productos.getAllProductosByCliente(msg.chat.id).then(() => {
+
+            });
+        }
+
         export const sendMessageReporteXMes = (msg: Message, mes: string) => {
 
             Data.Chats.actualizarChat(msg.chat.id, Contextos.Consultas.Extracto.reporte, "").then(() => {
@@ -113,8 +119,8 @@ export namespace Extracto {
 
                 let fechaHoy = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
 
-                let textoMensaje = 
-`<b>Banco. KodeFest8</b>, ${fechaHoy}
+                let textoMensaje =
+                    `<b>Banco. KodeFest8</b>, ${fechaHoy}
 <b>Cliente:</b>, ${fechaHoy}
 Has elegido: ${nombresMeses[mes]}`;
 
@@ -128,6 +134,10 @@ Has elegido: ${nombresMeses[mes]}`;
 
         export const onSelectMes = (msg: ApiMessage, mes: string) => {
             sendMessageReporteXMes(msg.message, mes);
+        }
+
+        export const onSelectProducto = (msg: ApiMessage) => {
+            sendMessageProductosCliente(msg.message);
         }
 
     }
