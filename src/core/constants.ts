@@ -75,6 +75,11 @@ export namespace Constants {
                 export namespace InscribirCuentaServicios {
                     export const seleccionServicio = 'Facturas/InscribirCuentaServicios/seleccionServicio';
                 }
+
+                export namespace PagarServicioSeleccionado {
+                    export const getNumeroFactura = 'Facturas/PagarServicioPagarServicioSeleccionado//getNumeroFactura';
+                    export const getValorPagar = 'Facturas/PagarServicioPagarServicioSeleccionado//getValorPagar';
+                }
             }
 
             export namespace Transferencias {
@@ -145,6 +150,12 @@ export namespace Constants {
                 export namespace PagarServicios {
                     export const seleccionarServicio = 'seleccionarServicio';
                     export const seleccionarProducto = 'seleccionarProducto';
+                    export const volver = 'volver';
+                }
+
+                export namespace PagarServicioSeleccionado {
+                    export const getNumeroFactura = 'getNumeroFactura';
+                    export const getValorPagar = 'getValorPagar';
                     export const volver = 'volver';
                 }
 
