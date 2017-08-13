@@ -7,6 +7,6 @@ export namespace Movimientos {
 
     export const setMovimiento = (chatId: string | number, movimientoModel: MovimientoModel): Promise<Array<ServicioModel>> => {
 
-        return dataBase.ref('movimientos/' + chatId).set(movimientoModel);
+        return dataBase.ref('movimientos/' + chatId).push(movimientoModel);
     }
 }
