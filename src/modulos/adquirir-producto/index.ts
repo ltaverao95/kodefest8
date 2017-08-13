@@ -8,6 +8,14 @@ import { Contextos } from "../../core/index";
 import { ReplyKeyboardMarkup } from "../../bot/ReplyKeyboardMarkup";
 import { SendMessageOptions } from "../../bot/SendMessageOptions";
 
+import { Validaciones } from "../../utils";
+
+import {
+    ChatModel,
+    ProductoModel,
+    ProductoBanco
+} from "../../core/models";
+
 export namespace AdquirirProducto {
 
     export enum Options {
@@ -17,7 +25,7 @@ export namespace AdquirirProducto {
     export namespace Metodos {
 
         export const sendMessage = (msg: Message) => {
-            Data.Chats.actualizarChat(msg, Contextos.AdquirirProducto.Index.index, "").then(() => {
+            Data.Chats.actualizarChat(msg, Contextos.AdquirirProducto.Index.index, Comandos.AdquirirProducto.Index.verProductosDisponibles).then(() => {
 
                 const messageOptions = {
                     reply_markup: {
@@ -66,24 +74,43 @@ export namespace AdquirirProducto {
                     return;
                 }
 
-                if (msg.query.indexOf(Comandos.AdquirirProducto.Index.verProductosDisponibles) === 0) {
-                    Data.Productos.getProductosPorAdquirirByClienteArticles(msg.from.id).then((productosPorAdquirir) => {
-                        bot.answerInlineQuery(
-                            msg.id,
-                            productosPorAdquirir
-                        );
-                    });
-                }
+                Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
 
+                    if (chat.contexto.indexOf(Contextos.AdquirirProducto.Index.index) === 0 &&
+                        chat.comando.indexOf(Comandos.AdquirirProducto.Index.verProductosDisponibles) === 0) {
+
+                        Data.Productos.getProductosPorAdquirirByClienteArticles(msg.from.id).then((productosPorAdquirir) => {
+                            bot.answerInlineQuery(
+                                msg.id,
+                                productosPorAdquirir
+                            );
+                        });
+                    }
+                });
             });
-            
-            /*
+
             bot.on('chosen_inline_result', (msg: ApiMessage) => {
-                console.log('chosen_inline_result');
-                console.log(JSON.stringify(msg));
-                bot.sendMessage(msg.from.id, `result selected id: ` + msg.result_id);
+
+                Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
+
+                    if (chat.contexto.indexOf(Contextos.AdquirirProducto.Index.index) === 0) {
+
+                        Data.Productos.getProductoBancoById(msg.result_id).then((producto: ProductoBanco) => {
+
+                            if (!producto) {
+                                return;
+                            }
+
+                            Data.Productos.saveProductosCliente(msg.from.id, {
+                                idProducto: producto.id,
+                                confirmado:false,
+                                numero: Validaciones.generarGUID()
+                            } as ProductoModel);
+                        });
+                    }
+                });
             });
-            */
+
         }
     }
 }

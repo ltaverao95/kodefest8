@@ -8,52 +8,45 @@ import {
     ProductoBanco
 } from "../core";
 
+import { getListFromFirebaseObject } from "./common";
+
 import { Chats } from "./chats";
 
 export namespace Productos {
 
     export const getProductosByCliente = (chatId: number): Promise<any> => {
 
-        return dataBase.ref('productos').once('value')
-            .then((snapshot: any) => {
+        return getAllProductosBanco().then((productosBanco: Array<ProductoBanco>) => {
 
-                let productosBanco = snapshot.val();
+            return getProductosDeCliente(chatId).then((productosDeCliente: Array<ProductoModel>) => {
 
-                //return dataBase.ref('clientes/' + chatId + '/productos').once('value')
-                return dataBase.ref('clientes/123412344/productos').once('value')
-                    .then((snapshot: any) => {
+                let productos = new Array();
 
-                        let productosRegistrados: Array<ProductoModel> = snapshot.val();
-                        let productosCliente = new Array();
+                if (!productosDeCliente || productosDeCliente.length === 0) {
+                    return productos;
+                }
 
-                        for (let i = 1; i < productosRegistrados.length; i++) {
+                for (let i = 0; i < productosDeCliente.length; i++) {
 
-                            if (!productosRegistrados[i]) {
-                                continue;
-                            }
+                    if (!productosDeCliente[i]) {
+                        continue;
+                    }
 
-                            productosCliente.push({
-                                id: i.toString(),
-                                type: 'article',
-                                title: productosBanco[productosRegistrados[i].idProducto].nombre,
-                                input_message_content: {
-                                    message_text: productosBanco[productosRegistrados[i].idProducto].nombre + ", Saldo: $" + productosRegistrados[i].saldo
-                                },
-                                description: "Saldo: $" + productosRegistrados[i].saldo.toString(),
-                                thumb_url: productosBanco[productosRegistrados[i].idProducto].icono
-                            })
-                        }
-
-                        return productosCliente;
+                    productos.push({
+                        id: i.toString(),
+                        type: 'article',
+                        title: productosBanco[productosDeCliente[i].idProducto].nombre,
+                        input_message_content: {
+                            message_text: productosBanco[productosDeCliente[i].idProducto].nombre + ", Saldo: $" + productosDeCliente[i].saldo
+                        },
+                        description: "Saldo: $" + productosDeCliente[i].saldo.toString(),
+                        thumb_url: productosBanco[productosDeCliente[i].idProducto].icono
                     })
-                    .catch((error: any) => {
-                        console.log("Productos/getProductosByCliente" + error);
-                    });
-            })
-            .catch((error: any) => {
-                console.log("Productos/getProductosByCliente" + error);
-            });
+                }
 
+                return productos;
+            });
+        });
     }
 
     export const getProductosPorAdquirirByClienteArticles = (chatId: number): Promise<any> => {
@@ -90,7 +83,7 @@ export namespace Productos {
                 if (!productosDeCliente || productosDeCliente.length === 0) {
                     return productosBanco;
                 }
-                
+
                 let productosPorAdquirir = new Array<ProductoBanco>();
 
                 for (var i = 0; i < productosBanco.length; i++) {
@@ -100,13 +93,14 @@ export namespace Productos {
                     }
 
                     if (productosDeCliente.findIndex((productoCliente: ProductoModel) => {
+
                         if (!productoCliente) {
                             return false;
                         }
+
                         return productoCliente.idProducto === productosBanco[i].id
-                    }) === -1) {
-                        productosPorAdquirir.push(productosBanco[i]);
-                    }
+
+                    }) === -1) { productosPorAdquirir.push(productosBanco[i]); }
                 }
 
                 return productosPorAdquirir;
@@ -117,7 +111,7 @@ export namespace Productos {
     export const getProductosDeCliente = (chatId: number): Promise<any> => {
         return dataBase.ref('clientes/' + chatId + '/productos').once('value')
             .then((snapshot: any) => {
-                return snapshot.val();
+                return getListFromFirebaseObject<ProductoModel>(snapshot.val());
             })
             .catch((error: any) => {
                 console.log("Productos/getProductosDeCliente" + error);
@@ -127,10 +121,24 @@ export namespace Productos {
     export const getAllProductosBanco = (): Promise<Array<ProductoBanco>> => {
         return dataBase.ref('productos').once('value')
             .then((snapshot: any) => {
-                return snapshot.val();
+                return getListFromFirebaseObject<ProductoBanco>(snapshot.val());
             })
             .catch((error: any) => {
                 console.log("Productos/getAllProductosBanco" + error);
             });
+    }
+
+    export const getProductoBancoById = (idProducto: number | string): Promise<ProductoBanco> => {
+        return dataBase.ref('productos/' + idProducto).once('value')
+            .then((snapshot: any) => {
+                return getListFromFirebaseObject<ProductoBanco>(snapshot.val());
+            })
+            .catch((error: any) => {
+                console.log("Productos/getProductoBancoById" + error);
+            });
+    }
+
+    export const saveProductosCliente = (chatId: string | number, producto: ProductoModel): Promise<any> => {
+        return dataBase.ref('clientes/' + chatId + '/productos').push(producto);
     }
 }
