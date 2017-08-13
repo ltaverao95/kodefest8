@@ -14,7 +14,7 @@ import { Chats } from "./chats";
 
 export namespace Productos {
 
-    export const getProductosByCliente = (chatId: number): Promise<any> => {
+    export const getSaldoDeProductosByCliente = (chatId: number): Promise<any> => {
 
         return getAllProductosBanco().then((productosBanco: Array<ProductoBanco>) => {
 
@@ -35,7 +35,7 @@ export namespace Productos {
                     let saldo = productosDeCliente[i].saldo == null ? '0' : productosDeCliente[i].saldo.toString();
 
                     let fechaHoy = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-                    
+
                     productos.push({
                         id: productosDeCliente[i].id.toString(),
                         type: 'article',
@@ -125,6 +125,16 @@ Fecha ${fechaHoy}`,
 
     export const getProductoBancoById = (idProducto: number | string): Promise<ProductoBanco> => {
         return dataBase.ref('productos/' + idProducto).once('value')
+            .then((snapshot: any) => {
+                return snapshot.val();
+            })
+            .catch((error: any) => {
+                console.log("Productos/getProductoBancoById" + error);
+            });
+    }
+
+    export const getProductoClienteById = (idProducto: number | string): Promise<ProductoBanco> => {
+        return dataBase.ref('clientes/productos/' + idProducto).once('value')
             .then((snapshot: any) => {
                 return snapshot.val();
             })

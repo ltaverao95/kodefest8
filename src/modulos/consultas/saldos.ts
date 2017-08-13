@@ -29,7 +29,7 @@ export namespace Saldo {
                 }
 
                 if (msg.query.indexOf(Contextos.Consultas.Saldos.saldos) === 0) {
-                    Data.Productos.getProductosByCliente(msg.from.id).then((productos) => {
+                    Data.Productos.getSaldoDeProductosByCliente(msg.from.id).then((productos) => {
 
                         let productosAdquiridos = productos;
 
