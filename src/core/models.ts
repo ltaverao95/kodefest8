@@ -19,7 +19,7 @@ export interface ClienteModel {
 
 export interface ProductoModel {
     numero: string;
-    nombre: string;
+    idProducto: number;
     cupoMaximo: number;
     cupoMinimo: number;
     saldo: number;

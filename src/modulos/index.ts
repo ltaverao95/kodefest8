@@ -64,7 +64,7 @@ export namespace index {
                     if (chat.contexto == Contextos.PaginaInicial.index
                         && chat.comando == Comandos.PaginaInicial.Index.getUsuario) {
                         if (Validaciones.esNumeroRequeridoValido(msg.text)) {
-                            Data.Clientes.actualizarDocumento(msg, parseInt(msg.text)).then(() => {
+                            Data.Clientes.actualizarDatosBasicos(msg, parseInt(msg.text)).then(() => {
                                 Metodos.solicitarClave(msg);
                             });
                         } else {

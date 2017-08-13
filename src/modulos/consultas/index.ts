@@ -40,7 +40,7 @@ export namespace Index {
                             [
                                 {
                                     text: Options.Saldos,
-                                    callback_data: Contextos.Consultas.Saldos.saldos
+                                    switch_inline_query_current_chat: Contextos.Consultas.Saldos.saldos                                    
                                 }
                             ],
                             [
