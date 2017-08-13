@@ -98,13 +98,18 @@ export namespace InscribirCuentaServicio {
 
                     if (chat.contexto.indexOf(Contextos.Facturas.InscribirCuentaServicios.seleccionServicio) === 0) {
 
-                        InscribirCuentaServicios.getEmpresaServiciosByCliente(chat).then((serviciosResponseList: Array<ServicioModel>) => {
+                        InscribirCuentaServicios.getEmpresaServiciosByCliente(msg.from.id).then((serviciosResponseList: Array<ServicioModel>) => {
 
                             let serviciosInscritosList = [];
 
                             for (var i = 0; i < serviciosResponseList.length; i++) {
+
+                                if(serviciosResponseList[i].empresa === "dummy"){
+                                    continue;
+                                }
+
                                 serviciosInscritosList.push({
-                                    id: (i + 1).toString(),
+                                    id: i.toString(),
                                     type: 'article',
                                     title: serviciosResponseList[i].empresa,
                                     description: serviciosResponseList[i].descripcion,
@@ -141,7 +146,7 @@ export namespace InscribirCuentaServicio {
                                 chat: {
                                     id: msg.from.id
                                 }
-                            } as Message, msg.result_id, snapshot.val())
+                            } as Message, msg.result_id++, snapshot.val())
                         });
                     }
                 });
