@@ -48,6 +48,10 @@ export namespace AdquirirProducto {
             });
         }
 
+        export const sendErrorMessage = (msg: Message, errorMessage: string) => {
+            bot.sendMessage(msg.chat.id, `❌ ${errorMessage}`);
+        }
+
         export const onAdquirirProducto = (msg: Message) => {
             sendMessage(msg);
         }
@@ -65,7 +69,34 @@ export namespace AdquirirProducto {
 
                 if (msg.text.indexOf(Comandos.PaginaInicial.MenuPrincipal.adquirirProducto) === 0) {
                     Metodos.onAdquirirProducto(msg);
+                } else {
+                    Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
+
+                        if (chat.contexto.indexOf(Contextos.AdquirirProducto.Index.index) === 0 &&
+                            chat.comando.indexOf(Comandos.AdquirirProducto.Index.setSaldoInicial) === 0) {
+
+                            if (!chat.datosComando) {
+                                return;
+                            }
+
+                            if (Validaciones.esNumeroRequeridoValido(msg.text)) {
+                                let saldo = parseFloat(msg.text);
+
+                                if (saldo > 0) {
+                                    Data.Productos.updateSaldoProducto(msg.from.id, chat.datosComando, saldo);
+                                } else {
+                                    Metodos.sendErrorMessage(msg, `El saldo inicial no puede ser negativo, por favor ingresa nuevamente el valor`);
+                                }
+
+                            } else {
+                                Metodos.sendErrorMessage(msg, `El valor que ingresaste no es valido, por favor ingresa nuevamente el valor`);
+                            };
+
+                        }
+
+                    });
                 }
+
             });
 
             bot.on('inline_query', (msg: ApiMessage) => {
@@ -82,7 +113,10 @@ export namespace AdquirirProducto {
                         Data.Productos.getProductosPorAdquirirByClienteArticles(msg.from.id).then((productosPorAdquirir) => {
                             bot.answerInlineQuery(
                                 msg.id,
-                                productosPorAdquirir
+                                productosPorAdquirir,
+                                {
+                                    cache_time: '10'
+                                }
                             );
                         });
                     }
@@ -93,19 +127,18 @@ export namespace AdquirirProducto {
 
                 Data.Chats.getChatByUserId(msg.from.id).then((chat: ChatModel) => {
 
-                    if (chat.contexto.indexOf(Contextos.AdquirirProducto.Index.index) === 0) {
+                    if (chat.contexto.indexOf(Contextos.AdquirirProducto.Index.index) === 0 &&
+                        chat.comando.indexOf(Comandos.AdquirirProducto.Index.verProductosDisponibles) === 0) {
 
-                        Data.Productos.getProductoBancoById(msg.result_id).then((producto: ProductoBanco) => {
+                        Data.Chats.guardarComandoByChatId(msg.from.id, Comandos.AdquirirProducto.Index.setSaldoInicial);
 
-                            if (!producto) {
-                                return;
-                            }
+                        Data.Productos.saveProductosCliente(msg.from.id, {
+                            idProducto: msg.result_id,
+                            numero: Validaciones.generarGUID()
+                        } as ProductoModel);
 
-                            Data.Productos.saveProductosCliente(msg.from.id, {
-                                idProducto: producto.id,
-                                confirmado:false,
-                                numero: Validaciones.generarGUID()
-                            } as ProductoModel);
+                        Data.Productos.getProductoClienteByProductoBancoId(msg.from.id, msg.result_id).then((productoCliente: ProductoModel) => {
+                            Data.Chats.actualizarDatoComando(msg.from.id, productoCliente.id.toString());
                         });
                     }
                 });

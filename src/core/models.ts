@@ -10,6 +10,7 @@ export interface ChatModel extends IModel {
     id: number | string;
     contexto: string;
     comando: string;
+    datosComando?: string;
 }
 
 export interface ClienteModel extends IModel {
@@ -29,7 +30,6 @@ export interface ProductoModel extends IModel {
     saldo: number;
     movimientos: Array<MovimientoModel>;
     saldosMensuales: Array<SaldoMensualModel>;
-    confirmado: boolean;
 }
 
 export interface ProductoBanco extends IModel {

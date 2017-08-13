@@ -12,6 +12,14 @@ export namespace Chats {
         return dataBase.ref('chats/' + msg.chat.id + '/comando').set(comando);
     }
 
+    export const guardarComandoByChatId = (chatId: number, comando: string): Promise<any> => {
+        return dataBase.ref('chats/' + chatId + '/comando').set(comando);
+    }
+
+    export const actualizarDatoComando = (chatId: number, datosComando: string): Promise<any> => {
+        return dataBase.ref('chats/' + chatId + '/datosComando').set(datosComando);
+    }
+
     export const actualizarChat = (msg: Message, contexto: string, comando: string): Promise<any> => {
         return dataBase.ref('chats/' + msg.chat.id).set({
             contexto,
@@ -24,7 +32,7 @@ export namespace Chats {
             contexto: "",
             comando: ""
         });
-    } 
+    }
 
     export const getChat = (msg: Message): Promise<ChatModel> => {
         return dataBase.ref('chats/' + msg.chat.id).once('value')

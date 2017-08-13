@@ -33,7 +33,7 @@ export namespace Productos {
                     }
 
                     productos.push({
-                        id: i.toString(),
+                        id: productosDeCliente[i].id.toString(),
                         type: 'article',
                         title: productosBanco[productosDeCliente[i].idProducto].nombre,
                         input_message_content: {
@@ -51,20 +51,17 @@ export namespace Productos {
 
     export const getProductosPorAdquirirByClienteArticles = (chatId: number): Promise<any> => {
         return getProductosPorAdquirirByCliente(chatId).then((productosPorAdquirir: Array<ProductoBanco>) => {
+
             let articles = [];
 
             for (var i = 0; i < productosPorAdquirir.length; i++) {
-
-                if (!productosPorAdquirir[i]) {
-                    continue;
-                }
-
                 articles.push({
                     id: productosPorAdquirir[i].id.toString(),
                     type: 'article',
                     title: productosPorAdquirir[i].nombre,
                     input_message_content: {
-                        message_text: "Adquiere este producto ahora"
+                        message_text: `Ahora ingresa el saldo inicial para tu <b>${productosPorAdquirir[i].nombre}</b>`,
+                        parse_mode: 'HTML'
                     },
                     description: 'Clic aquí para adquirir este producto',
                     thumb_url: productosPorAdquirir[i].icono
@@ -88,19 +85,9 @@ export namespace Productos {
 
                 for (var i = 0; i < productosBanco.length; i++) {
 
-                    if (!productosBanco[i]) {
-                        continue;
+                    if (productosDeCliente.findIndex((productoCliente: ProductoModel) => productoCliente.idProducto == productosBanco[i].id) === -1) {
+                        productosPorAdquirir.push(productosBanco[i]);
                     }
-
-                    if (productosDeCliente.findIndex((productoCliente: ProductoModel) => {
-
-                        if (!productoCliente) {
-                            return false;
-                        }
-
-                        return productoCliente.idProducto === productosBanco[i].id
-
-                    }) === -1) { productosPorAdquirir.push(productosBanco[i]); }
                 }
 
                 return productosPorAdquirir;
@@ -108,7 +95,7 @@ export namespace Productos {
         })
     }
 
-    export const getProductosDeCliente = (chatId: number): Promise<any> => {
+    export const getProductosDeCliente = (chatId: number | string): Promise<Array<ProductoModel>> => {
         return dataBase.ref('clientes/' + chatId + '/productos').once('value')
             .then((snapshot: any) => {
                 return getListFromFirebaseObject<ProductoModel>(snapshot.val());
@@ -131,14 +118,33 @@ export namespace Productos {
     export const getProductoBancoById = (idProducto: number | string): Promise<ProductoBanco> => {
         return dataBase.ref('productos/' + idProducto).once('value')
             .then((snapshot: any) => {
-                return getListFromFirebaseObject<ProductoBanco>(snapshot.val());
+                return snapshot.val();
             })
             .catch((error: any) => {
                 console.log("Productos/getProductoBancoById" + error);
             });
     }
 
+    export const getProductoClienteByProductoBancoId = (chatId: number | string, productoBancoId: number): Promise<ProductoModel> => {
+
+        return getProductosDeCliente(chatId).then((productosDeCliente: Array<ProductoModel>) => {
+
+            for (var i = 0; i < productosDeCliente.length; i++) {
+
+                if (productosDeCliente[i].idProducto == productoBancoId) {
+                    return productosDeCliente[i];
+                }
+            }
+
+            return { id: -1 } as ProductoModel;
+        })
+    }
+
     export const saveProductosCliente = (chatId: string | number, producto: ProductoModel): Promise<any> => {
         return dataBase.ref('clientes/' + chatId + '/productos').push(producto);
+    }
+
+    export const updateSaldoProducto = (chatId: string | number, idProducto: string, saldo: number) => {
+        dataBase.ref('clientes/' + chatId + '/productos/' + idProducto + '/saldo').set(saldo);
     }
 }
