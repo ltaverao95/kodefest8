@@ -1,0 +1,945 @@
+{
+  "chats" : {
+    "7214654" : {
+      "comando" : "",
+      "contexto" : "Consultas/index"
+    },
+    "9195650" : {
+      "comando" : "",
+      "contexto" : "Facturas/index"
+    },
+    "62915927" : {
+      "comando" : "",
+      "contexto" : "Consultas/Extracto/seleccionMes",
+      "datosComando" : "-KrdKpH8RdnnSVUlJ3Lk"
+    },
+    "68660092" : {
+      "comando" : "",
+      "contexto" : "PaginaInicial/menuPrincipal"
+    },
+    "77643567" : {
+      "comando" : "",
+      "contexto" : "Facturas/index"
+    },
+    "78128696" : {
+      "comando" : "",
+      "contexto" : "Consultas/index"
+    },
+    "101813701" : {
+      "comando" : "verProductosDisponibles",
+      "contexto" : "AdquirirProducto/index"
+    },
+    "123412344" : {
+      "comando" : "eerter",
+      "contexto" : "laksjfoi"
+    },
+    "167692672" : {
+      "comando" : "verProductosDisponibles",
+      "contexto" : "AdquirirProducto/index"
+    },
+    "256770498" : {
+      "comando" : "setSaldoInicial",
+      "contexto" : "AdquirirProducto/index",
+      "datosComando" : "-KrSz7BVbNAgyfzCjqQw"
+    },
+    "272245542" : {
+      "comando" : "verProductosDisponibles",
+      "contexto" : "PaginaInicial/menuPrincipal"
+    },
+    "275064881" : {
+      "comando" : "",
+      "contexto" : "Facturas/index"
+    },
+    "300499998" : {
+      "comando" : "",
+      "contexto" : "Consultas/index"
+    },
+    "315563637" : {
+      "comando" : "",
+      "contexto" : "Facturas/index"
+    },
+    "328015223" : {
+      "comando" : "",
+      "contexto" : "Transferencias/index"
+    },
+    "343060813" : {
+      "comando" : "getValorPagar",
+      "contexto" : "Facturas/PagarServicioPagarServicioSeleccionado//getValorPagar"
+    },
+    "343525894" : {
+      "comando" : "",
+      "contexto" : "Transferencias/index"
+    },
+    "345436342" : {
+      "comando" : "",
+      "contexto" : "Consultas/index"
+    },
+    "358072478" : {
+      "comando" : "",
+      "contexto" : "Transferencias/index"
+    },
+    "376967255" : {
+      "comando" : "",
+      "contexto" : "Consultas/index"
+    },
+    "386886941" : {
+      "comando" : "setSaldoInicial",
+      "contexto" : "AdquirirProducto/index",
+      "datosComando" : "-Krpw2-LyQ284W049mmP"
+    },
+    "405831459" : {
+      "comando" : "",
+      "contexto" : "Consultas/Extracto/reporte"
+    },
+    "416903938" : {
+      "comando" : "",
+      "contexto" : "PaginaInicial/menuPrincipal"
+    },
+    "417686917" : {
+      "comando" : "getClave",
+      "contexto" : "PaginaInicial/index"
+    },
+    "417697955" : {
+      "comando" : "verProductosDisponibles",
+      "contexto" : "AdquirirProducto/index"
+    },
+    "427959210" : {
+      "comando" : "",
+      "contexto" : "Transferencias/index"
+    },
+    "428524365" : {
+      "comando" : "",
+      "contexto" : "Transferencias/index"
+    },
+    "431806453" : {
+      "comando" : "",
+      "contexto" : "Consultas/index"
+    },
+    "435503075" : {
+      "comando" : "",
+      "contexto" : "Consultas/Extracto/seleccionMes",
+      "datosComando" : "-Krdib-Ghl9SHnPjpBcr"
+    },
+    "448731605" : {
+      "comando" : "",
+      "contexto" : "Consultas/index"
+    }
+  },
+  "clientes" : {
+    "7214654" : {
+      "documento" : 1234,
+      "empresasInscritas" : [ {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+        "id" : 1,
+        "nombre" : "Aguas de Manizales"
+      } ],
+      "movimientos" : {
+        "-Krco2rBFAXwV3AERuUl" : {
+          "fechaHora" : 1502849547,
+          "numero" : "d2-f937cab00d",
+          "tipo" : "Pago servicios",
+          "valor" : 20
+        }
+      },
+      "nombre" : "Mauricio",
+      "productos" : {
+        "-KrcnXc8h_9WA-LPlPX7" : {
+          "idProducto" : "0",
+          "numero" : "5f-db7505822e",
+          "saldo" : 300
+        }
+      }
+    },
+    "9195650" : {
+      "documento" : 123456,
+      "empresasInscritas" : {
+        "4" : {
+          "descripcion" : "Pague su factura aquí",
+          "icono" : "http://icons.iconarchive.com/icons/treetog/junior/256/folder-iphone-icon.png",
+          "id" : 5,
+          "nombre" : "Movistar"
+        }
+      },
+      "nombre" : "Aleja"
+    },
+    "62915927" : {
+      "documento" : 12345,
+      "empresasInscritas" : [ {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+        "id" : 1,
+        "nombre" : "Aguas de Manizales"
+      }, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+        "id" : 3,
+        "nombre" : "Une"
+      } ],
+      "nombre" : "Darwin",
+      "productos" : {
+        "-KrTUSrXSjc-soNv30ET" : {
+          "idProducto" : "0",
+          "numero" : "7a-13525ab9e2",
+          "saldo" : 1234567890
+        },
+        "-KrVDvY9jX6_-Sfwojmp" : {
+          "idProducto" : "2",
+          "numero" : "1d-73e5ec00c3",
+          "saldo" : 0
+        },
+        "-KrdHp429fGIktiOCRl9" : {
+          "idProducto" : "1",
+          "numero" : "51-fc4cfaf921",
+          "saldo" : 10000
+        },
+        "-KrdKpH8RdnnSVUlJ3Lk" : {
+          "idProducto" : "3",
+          "numero" : "22-09e24974bd",
+          "saldo" : 12345
+        }
+      }
+    },
+    "68660092" : {
+      "productos" : {
+        "-KrrJRk8n98rBWahYvZv" : {
+          "idProducto" : "0",
+          "numero" : "a7-1c67d0d5c2",
+          "saldo" : 1.0E21
+        }
+      }
+    },
+    "77643567" : {
+      "documento" : 122,
+      "empresasInscritas" : [ null, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, null, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/ahdesign91/icloud/256/Mobile-Device-icon.png",
+        "id" : 4,
+        "nombre" : "Tigo"
+      } ],
+      "movimientos" : {
+        "-KrSz5-pAMLWpnAJDRCC" : {
+          "fechaHora" : 1502667890,
+          "numero" : "9a-02ebba2b37",
+          "tipo" : "Pago servicios",
+          "valor" : 123
+        },
+        "-KrSzy-yaRTdE6_jqKWB" : {
+          "fechaHora" : 1502668120,
+          "numero" : "4d-1b2fdf41a0",
+          "tipo" : "Pago servicios",
+          "valor" : 9000
+        },
+        "-KrT0aJueED3ak3ucKA5" : {
+          "fechaHora" : 1502668547,
+          "numero" : "ba-394886c145",
+          "tipo" : "Pago servicios",
+          "valor" : 133
+        }
+      },
+      "nombre" : "Diego",
+      "productos" : {
+        "-KrSyv7cNXCnE87rzbWG" : {
+          "idProducto" : "1",
+          "numero" : "26-9054ccca8e",
+          "saldo" : 123
+        },
+        "-KrSzmjEBZaj2syGDCaI" : {
+          "idProducto" : "0",
+          "numero" : "4f-5141c299a2",
+          "saldo" : 10000
+        },
+        "-KrT0QNDQloHkhT5oSE-" : {
+          "idProducto" : "3",
+          "numero" : "b5-b5e519d119",
+          "saldo" : 2467
+        },
+        "-KrT0S_73fWFxj7hi_mu" : {
+          "idProducto" : "2",
+          "numero" : "cf-8eaf5dd735",
+          "saldo" : 357
+        }
+      }
+    },
+    "78128696" : {
+      "documento" : 123,
+      "nombre" : "John",
+      "productos" : {
+        "-KrSz1AEFSosEFqMbqbs" : {
+          "idProducto" : "0",
+          "numero" : "61-5c57c8a54a",
+          "saldo" : 10000
+        }
+      }
+    },
+    "101813701" : {
+      "documento" : 1234,
+      "empresasInscritas" : {
+        "2" : {
+          "descripcion" : "Pague su factura aquí",
+          "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+          "id" : 3,
+          "nombre" : "Une"
+        }
+      },
+      "nombre" : "Jorge Mario",
+      "productos" : {
+        "-KrSzkEjh42oEgy3-PoU" : {
+          "idProducto" : "0",
+          "numero" : "4d-cb898cf30c",
+          "saldo" : 0
+        },
+        "-KrSztS9OWLkQxC2sl8Y" : {
+          "idProducto" : "1",
+          "numero" : "8f-212bcc1b76",
+          "saldo" : 0
+        }
+      }
+    },
+    "167692672" : {
+      "documento" : 1234,
+      "nombre" : "Daniel"
+    },
+    "256770498" : {
+      "documento" : 999999,
+      "nombre" : "Esteban",
+      "productos" : {
+        "-KrSz7BVbNAgyfzCjqQw" : {
+          "idProducto" : "0",
+          "numero" : "c9-20807e9ec2",
+          "saldo" : 0
+        }
+      }
+    },
+    "272245542" : {
+      "documento" : 123,
+      "empresasInscritas" : [ {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+        "id" : 1,
+        "nombre" : "Aguas de Manizales"
+      }, null, null, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/ahdesign91/icloud/256/Mobile-Device-icon.png",
+        "id" : 4,
+        "nombre" : "Tigo"
+      } ],
+      "movimientos" : {
+        "-KrTJcLOLMft4Tpyk5vC" : {
+          "fechaHora" : 1502673536,
+          "numero" : "c6-54fd1b5b94",
+          "tipo" : "Pago servicios",
+          "valor" : 40000
+        },
+        "-KrTKQozLsl8PUerlHCE" : {
+          "fechaHora" : 1502673747,
+          "numero" : "85-42ce19b650",
+          "tipo" : "Pago servicios",
+          "valor" : 70000
+        }
+      },
+      "nombre" : "Pipe",
+      "productos" : {
+        "-KrTIoUKDkFs8DF26LSk" : {
+          "idProducto" : "0",
+          "numero" : "9f-bb70f2f751",
+          "saldo" : 100000
+        },
+        "-KrTJIK7MijIVJvzUs2q" : {
+          "idProducto" : "1",
+          "numero" : "ce-bb91867ec8",
+          "saldo" : -4306459015806554944
+        }
+      }
+    },
+    "275064881" : {
+      "documento" : 1234,
+      "empresasInscritas" : {
+        "1" : {
+          "descripcion" : "pague su factura aquí",
+          "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+          "id" : 2,
+          "nombre" : "Gas Natural"
+        },
+        "4" : {
+          "descripcion" : "Pague su factura aquí",
+          "icono" : "http://icons.iconarchive.com/icons/treetog/junior/256/folder-iphone-icon.png",
+          "id" : 5,
+          "nombre" : "Movistar"
+        }
+      },
+      "nombre" : "César"
+    },
+    "300499998" : {
+      "documento" : 2020,
+      "empresasInscritas" : [ null, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+        "id" : 3,
+        "nombre" : "Une"
+      }, null, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/treetog/junior/256/folder-iphone-icon.png",
+        "id" : 5,
+        "nombre" : "Movistar"
+      } ],
+      "movimientos" : {
+        "-KrSqTb6h2h_wHRN-bC_" : {
+          "fechaHora" : 1502665632,
+          "numero" : "98-e014f081a4",
+          "tipo" : "Pago servicios",
+          "valor" : 10000
+        },
+        "-KrSqnFORnTnQ6pIywhg" : {
+          "fechaHora" : 1502665716,
+          "numero" : "fb-8dab0e15a3",
+          "tipo" : "Pago servicios",
+          "valor" : 5000
+        },
+        "-KrV_rdMOB87mLcJ9iuH" : {
+          "fechaHora" : 1502711609,
+          "numero" : "a4-cd00903b13",
+          "tipo" : "Pago servicios",
+          "valor" : 250000
+        },
+        "-Kr_cqlktoP5ektRRJn9" : {
+          "fechaHora" : 1502796278,
+          "numero" : "53-fa27458ad6",
+          "tipo" : "Pago servicios",
+          "valor" : 5000
+        },
+        "-KrrLRq9JAREVkImnrVE" : {
+          "fechaHora" : 1503093443,
+          "numero" : "c1-c277df5b94",
+          "tipo" : "Pago servicios",
+          "valor" : 2455
+        },
+        "-KrslTa_iriarTQW_lRa" : {
+          "fechaHora" : 1503117306,
+          "numero" : "2e-8e5f2b2936",
+          "tipo" : "Pago servicios",
+          "valor" : 3030
+        },
+        "-Krsnsfz96R-L57dYbFa" : {
+          "fechaHora" : 1503117937,
+          "numero" : "09-9671af6887",
+          "tipo" : "Pago servicios",
+          "valor" : 3675
+        }
+      },
+      "nombre" : "Jose Ubaldo",
+      "productos" : {
+        "-KrRwz4zFoolZN4M_ikO" : {
+          "idProducto" : "1",
+          "numero" : "76-49af5e472a",
+          "saldo" : 150000
+        },
+        "-KrRxYdOisD1ZitUbYrP" : {
+          "idProducto" : "0",
+          "numero" : "a9-ed884d1568",
+          "saldo" : 50000000
+        },
+        "-KrSqEXU2Agg7TzloqN9" : {
+          "idProducto" : "2",
+          "numero" : "19-0569137f0b",
+          "saldo" : 1000000000
+        },
+        "-KrslBTU8JihX88WUUIV" : {
+          "idProducto" : "3",
+          "numero" : "cb-31f1150eb9",
+          "saldo" : 2020
+        }
+      }
+    },
+    "315563637" : {
+      "documento" : 75147236,
+      "nombre" : "Carlos",
+      "productos" : {
+        "-KrSwGRabQPWncagm7Q4" : {
+          "idProducto" : "3",
+          "numero" : "12-ec32adb72b",
+          "saldo" : 1200000
+        },
+        "-KrWkLC-m7K3F3_27Xal" : {
+          "idProducto" : "0",
+          "numero" : "e3-16828ffef8",
+          "saldo" : 12000000
+        }
+      }
+    },
+    "328015223" : {
+      "documento" : 104948,
+      "nombre" : "Laura",
+      "productos" : {
+        "-KrThtjrRXLS_x7IZ7K_" : {
+          "idProducto" : "1",
+          "numero" : "f2-aa84f2fdba",
+          "saldo" : 500
+        }
+      }
+    },
+    "343060813" : {
+      "documento" : 123456,
+      "empresasInscritas" : [ {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+        "id" : 1,
+        "nombre" : "Aguas de Manizales"
+      }, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, null, null, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/treetog/junior/256/folder-iphone-icon.png",
+        "id" : 5,
+        "nombre" : "Movistar"
+      } ],
+      "movimientos" : {
+        "-KrSsplmYZSFPVO9m9ZT" : {
+          "fechaHora" : 1502666251,
+          "numero" : "f8-c90edb9644",
+          "tipo" : "Pago servicios",
+          "valor" : 50000
+        },
+        "-KrT6CCtYr_wgnDXPXFy" : {
+          "fechaHora" : 1502670017,
+          "numero" : "b1-4aad823e20",
+          "tipo" : "Pago servicios",
+          "valor" : 57490
+        },
+        "-Ks-bTmPc5J50SdtuRG1" : {
+          "fechaHora" : 1503248903,
+          "numero" : "bd-2ff5617f16",
+          "tipo" : "Pago servicios",
+          "valor" : 1000
+        }
+      },
+      "nombre" : "Felipe",
+      "productos" : {
+        "-KrSrjXXGzAGFSAr6ihI" : {
+          "idProducto" : "0",
+          "numero" : "fa-4e1fb44945",
+          "saldo" : 1000000
+        },
+        "-KrSsGVy28feFYtz7FS8" : {
+          "idProducto" : "1",
+          "numero" : "1e-cf57f56eb4",
+          "saldo" : 500000
+        },
+        "-KrT6oXrbwP7djWZpl8g" : {
+          "idProducto" : "3",
+          "numero" : "b4-1ec9747862",
+          "saldo" : 490000
+        },
+        "-Ks-bFRZa5Y1cMfwipJV" : {
+          "idProducto" : "2",
+          "numero" : "d3-c77da383e1",
+          "saldo" : 0
+        }
+      }
+    },
+    "343525894" : {
+      "documento" : 123123123,
+      "nombre" : "Daniel M",
+      "productos" : {
+        "-KrTGBNONe4gGkay3kJN" : {
+          "idProducto" : "0",
+          "numero" : "90-0a95cb6960",
+          "saldo" : 12333333
+        },
+        "-KrTGTxj5b6rqPnpf3VI" : {
+          "idProducto" : "1",
+          "numero" : "de-a5ab347858",
+          "saldo" : 0
+        }
+      }
+    },
+    "345436342" : {
+      "documento" : 132,
+      "empresasInscritas" : [ {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+        "id" : 1,
+        "nombre" : "Aguas de Manizales"
+      }, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, null, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/ahdesign91/icloud/256/Mobile-Device-icon.png",
+        "id" : 4,
+        "nombre" : "Tigo"
+      } ],
+      "movimientos" : {
+        "-KrSeeTvaypczDDuXdC2" : {
+          "fechaHora" : 1502662534,
+          "numero" : "35-e9d1bb6b95",
+          "tipo" : "Pago servicios",
+          "valor" : 5000
+        }
+      },
+      "nombre" : "Luis Felipe",
+      "productos" : {
+        "-KrS83dmpnh1nFk5Nrhq" : {
+          "idProducto" : "0",
+          "numero" : "17-ffe9678e46",
+          "saldo" : 500000
+        },
+        "-KrSaUUgdM-mU1-CsoIF" : {
+          "idProducto" : "1",
+          "numero" : "df-62a4fd3588",
+          "saldo" : 5000000
+        }
+      }
+    },
+    "358072478" : {
+      "documento" : 1007006223,
+      "empresasInscritas" : {
+        "3" : {
+          "descripcion" : "Pague su factura aquí",
+          "icono" : "http://icons.iconarchive.com/icons/ahdesign91/icloud/256/Mobile-Device-icon.png",
+          "id" : 4,
+          "nombre" : "Tigo"
+        }
+      },
+      "nombre" : "Sebastian"
+    },
+    "376967255" : {
+      "documento" : 123,
+      "nombre" : "Julia",
+      "productos" : {
+        "-KrTHk8XQKmkJioxKki5" : {
+          "idProducto" : "3",
+          "numero" : "a3-b46a132545",
+          "saldo" : 10000
+        }
+      }
+    },
+    "386886941" : {
+      "documento" : 1113,
+      "empresasInscritas" : [ null, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+        "id" : 3,
+        "nombre" : "Une"
+      }, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/ahdesign91/icloud/256/Mobile-Device-icon.png",
+        "id" : 4,
+        "nombre" : "Tigo"
+      } ],
+      "movimientos" : {
+        "-KrSz8t8uuBbn-T80GDg" : {
+          "fechaHora" : 1502667906,
+          "numero" : "ba-19cbc32b84",
+          "tipo" : "Pago servicios",
+          "valor" : 50
+        },
+        "-KrTMGVHuK1QkA74dAZb" : {
+          "fechaHora" : 1502674229,
+          "numero" : "98-2f2d1eb54a",
+          "tipo" : "Pago servicios",
+          "valor" : 50000
+        },
+        "-KrboNBPsLsjkfnh1xZw" : {
+          "fechaHora" : 1502832853,
+          "numero" : "f0-45c0e502c7",
+          "tipo" : "Pago servicios",
+          "valor" : 50000
+        },
+        "-KrfercDfTz7NOKpHTG8" : {
+          "fechaHora" : 1502897469,
+          "numero" : "62-04ab19c0ac",
+          "tipo" : "Pago servicios",
+          "valor" : 50000
+        },
+        "-KrpvoAnXYM8Jfmf8EcF" : {
+          "fechaHora" : 1503069684,
+          "numero" : "ca-bd53361f21",
+          "tipo" : "Pago servicios",
+          "valor" : 50000
+        }
+      },
+      "nombre" : "Estefanía",
+      "productos" : {
+        "-KrSyvVBfEI7Z6aobfSe" : {
+          "idProducto" : "0",
+          "numero" : "4e-2b06ad36f7",
+          "saldo" : 500
+        },
+        "-KrSzCk8pF_CwJ6P_Umn" : {
+          "idProducto" : "2",
+          "numero" : "4f-bfd1e937aa",
+          "saldo" : 509000
+        },
+        "-Krpw2-LyQ284W049mmP" : {
+          "idProducto" : "3",
+          "numero" : "10-2a7d3845e9",
+          "saldo" : 0
+        }
+      }
+    },
+    "405831459" : {
+      "documento" : 577,
+      "empresasInscritas" : [ {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+        "id" : 1,
+        "nombre" : "Aguas de Manizales"
+      }, null, null, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/ahdesign91/icloud/256/Mobile-Device-icon.png",
+        "id" : 4,
+        "nombre" : "Tigo"
+      } ],
+      "movimientos" : {
+        "-KrT2d1Xn171DoOlV5oe" : {
+          "fechaHora" : 1502669082,
+          "numero" : "9d-932c787795",
+          "tipo" : "Pago servicios",
+          "valor" : 47577
+        }
+      },
+      "nombre" : "Orlando",
+      "productos" : {
+        "-KrSUeqoYJd6XJAoul60" : {
+          "idProducto" : "3",
+          "numero" : "50-033454993f",
+          "saldo" : 73747383
+        },
+        "-KrSsjckU06UnRZcmOye" : {
+          "idProducto" : "0",
+          "numero" : "d3-b93e37fce4",
+          "saldo" : 0
+        }
+      }
+    },
+    "416903938" : {
+      "documento" : 12345,
+      "nombre" : "Ana",
+      "productos" : {
+        "-Krkt3dN294TOBBw_zMu" : {
+          "idProducto" : "0",
+          "numero" : "56-58c48ff68f",
+          "saldo" : 12345
+        }
+      }
+    },
+    "417686917" : {
+      "documento" : 35678,
+      "nombre" : "Valentina",
+      "productos" : {
+        "-KrSzGJ3_SW0wh2mvqbM" : {
+          "idProducto" : "1",
+          "numero" : "ce-34053ff633",
+          "saldo" : 30000
+        }
+      }
+    },
+    "417697955" : {
+      "documento" : 137,
+      "nombre" : "Jacobo Andrés"
+    },
+    "427959210" : {
+      "documento" : 123,
+      "empresasInscritas" : [ null, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+        "id" : 3,
+        "nombre" : "Une"
+      } ],
+      "movimientos" : {
+        "-KrgC21UUG7akSFwHTA3" : {
+          "fechaHora" : 1502906429,
+          "numero" : "a7-7bb60b88c6",
+          "tipo" : "Pago servicios",
+          "valor" : 1009
+        },
+        "-KrhwTGGEiJmp4dcPLHa" : {
+          "fechaHora" : 1502935639,
+          "numero" : "17-ee5a549e86",
+          "tipo" : "Pago servicios",
+          "valor" : 20
+        },
+        "-Ks-0qLv4HCkVER7HU8_" : {
+          "fechaHora" : 1503239038,
+          "numero" : "64-82a01677b0",
+          "tipo" : "Pago servicios",
+          "valor" : 200
+        }
+      },
+      "nombre" : "Carlos",
+      "productos" : {
+        "-KrSADfNwNAThNuSfDNA" : {
+          "idProducto" : "1",
+          "numero" : "04-5e837f7308",
+          "saldo" : 200000
+        }
+      }
+    },
+    "428524365" : {
+      "documento" : 12345,
+      "nombre" : "Alejandro",
+      "productos" : {
+        "-KrSyyGAu7stU2nLLflO" : {
+          "idProducto" : "1",
+          "numero" : "dc-327c819a17",
+          "saldo" : 10000
+        }
+      }
+    },
+    "431806453" : {
+      "documento" : 1223,
+      "empresasInscritas" : [ {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+        "id" : 1,
+        "nombre" : "Aguas de Manizales"
+      }, {
+        "descripcion" : "pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+        "id" : 2,
+        "nombre" : "Gas Natural"
+      }, {
+        "descripcion" : "Pague su factura aquí",
+        "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+        "id" : 3,
+        "nombre" : "Une"
+      } ],
+      "nombre" : "Daniel Andres",
+      "productos" : {
+        "-KrW2AxX3ZKFTZXFqadJ" : {
+          "idProducto" : "3",
+          "numero" : "c4-dcaa570fd9",
+          "saldo" : 100000
+        },
+        "-KrWiW1UeaCWJSD4Qevv" : {
+          "idProducto" : "2",
+          "numero" : "98-4ef073236f",
+          "saldo" : 0
+        }
+      }
+    },
+    "435503075" : {
+      "documento" : 7514113,
+      "nombre" : "Sergio",
+      "productos" : {
+        "-Krdib-Ghl9SHnPjpBcr" : {
+          "idProducto" : "3",
+          "numero" : "9b-bb8c902034",
+          "saldo" : 54321
+        }
+      }
+    },
+    "448731605" : {
+      "documento" : 12345,
+      "empresasInscritas" : {
+        "2" : {
+          "descripcion" : "Pague su factura aquí",
+          "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+          "id" : 3,
+          "nombre" : "Une"
+        }
+      },
+      "movimientos" : {
+        "-KrWnWBFLrcguw2eNQ06" : {
+          "fechaHora" : 1502731965,
+          "numero" : "a3-ab264bb86d",
+          "tipo" : "Pago servicios",
+          "valor" : 100000
+        }
+      },
+      "nombre" : "Oscar",
+      "productos" : {
+        "-KrWm-UAw8Zi_i_FXoVk" : {
+          "idProducto" : "0",
+          "numero" : "48-4089397d41",
+          "saldo" : 300000
+        },
+        "-KrWmPDuc2bdsiFtEkb3" : {
+          "idProducto" : "2",
+          "numero" : "49-6d6ed0a422",
+          "saldo" : 200000
+        }
+      }
+    }
+  },
+  "empresaServicio" : [ {
+    "descripcion" : "Pague su factura aquí",
+    "icono" : "http://icons.iconarchive.com/icons/custom-icon-design/flatastic-11/256/Globe-service-icon.png",
+    "id" : 1,
+    "nombre" : "Aguas de Manizales"
+  }, {
+    "descripcion" : "pague su factura aquí",
+    "icono" : "http://icons.iconarchive.com/icons/faychen521/kitchen/128/gas-yellow-icon.png",
+    "id" : 2,
+    "nombre" : "Gas Natural"
+  }, {
+    "descripcion" : "Pague su factura aquí",
+    "icono" : "http://icons.iconarchive.com/icons/tpdkdesign.net/refresh-cl/256/Network-Modem-Connection-icon.png",
+    "id" : 3,
+    "nombre" : "Une"
+  }, {
+    "descripcion" : "Pague su factura aquí",
+    "icono" : "http://icons.iconarchive.com/icons/ahdesign91/icloud/256/Mobile-Device-icon.png",
+    "id" : 4,
+    "nombre" : "Tigo"
+  }, {
+    "descripcion" : "Pague su factura aquí",
+    "icono" : "http://icons.iconarchive.com/icons/treetog/junior/256/folder-iphone-icon.png",
+    "id" : 5,
+    "nombre" : "Movistar"
+  } ],
+  "productos" : [ {
+    "icono" : "http://icons.iconarchive.com/icons/beauticons/the-robbery/128/Coins-icon.png",
+    "nombre" : "Cuenta de ahorros"
+  }, {
+    "icono" : "http://icons.iconarchive.com/icons/double-j-design/ravenna-3d/256/Credit-Card-icon.png",
+    "nombre" : "Tarjeta de crédito"
+  }, {
+    "icono" : "http://icons.iconarchive.com/icons/icojoy/enjoyment/256/money-icon.png",
+    "nombre" : "Cuenta corriente"
+  }, {
+    "icono" : "http://icons.iconarchive.com/icons/double-j-design/ravenna-3d/256/V-Card-icon.png",
+    "nombre" : "Tarjeta débito"
+  } ],
+  "trasacciones" : [ {
+    "nombre" : "pago servicios",
+    "tipo" : "credito"
+  }, {
+    "nombre" : "transferencia desde",
+    "tipo" : "credito"
+  }, {
+    "nombre" : "transferencia hacia",
+    "tipo" : "credito"
+  } ]
+}
